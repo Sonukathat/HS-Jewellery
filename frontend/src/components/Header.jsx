@@ -1,0 +1,80 @@
+import { useState,useEffect } from "react";
+import { FaInstagram } from "react-icons/fa6";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { CiSearch, CiShoppingCart } from "react-icons/ci";
+import { CgProfile } from "react-icons/cg";
+import { RxHamburgerMenu } from "react-icons/rx";
+import machki from "../assets/8D6D93BB-F102-40BF-9634-90888310B860.webp";
+
+function Header() {
+    const texts = ["Cash On Delivery Upto 2000/-","Flat 10% off on Prepaid orders above 2000/-","Free shipping on orders above 1500/-"];
+    const [index,setIndex] = useState(0);
+    
+
+    useEffect(()=>{
+        const interval = setInterval(() => {
+            setIndex((prevIndex)=>(prevIndex+1)%texts.length);
+        },6000);
+
+        return ()=> clearInterval(interval);
+    })
+
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const paragraphs = [
+        "Shop All",
+        "Earrings",
+        "Necklaces",
+        "Bracelets",
+        "Rings",
+        "Last Chance to Buy",
+        "Natural Stone Jewelry",
+        "Chunky Bangles",
+    ];
+
+    return (
+        <div className="w-full">
+            <div className="bg-[#f8dcdb] py-2 flex justify-center sm:justify-around">
+                <div className="hidden sm:block">
+                    <a href="https://www.instagram.com/" target="_blank"><FaInstagram className="text-xl cursor-pointer"/></a>
+                </div>
+                <div className="flex items-center text-sm">
+                    <IoIosArrowBack />
+                    <p className="w-72 text-center">{texts[index]}</p>
+                    <IoIosArrowForward />
+                </div>
+            </div>
+            <div className="bg-white flex justify-evenly items-center p-2 lg:p-0 lg:py-2">
+                <div className="block lg:hidden">
+                    <RxHamburgerMenu className="text-2xl cursor-pointer" onClick={() => setMenuOpen(!menuOpen)}/>
+                </div>
+                <div>
+                    <img src={machki} alt="machki" className="w-36 xl:w-44" />
+                </div>
+                <div className="hidden lg:flex gap-3 xl:gap-8">
+                    {paragraphs.map((text, index) => (
+                        <p className="cursor-pointer text-sm" key={index}>
+                            {text}
+                        </p>
+                    ))}
+                </div>
+                <div className="flex gap-4 xl:gap-8">
+                    <CiSearch className="text-2xl cursor-pointer" />
+                    <CgProfile className="text-2xl cursor-pointer" />
+                    <CiShoppingCart className="text-2xl cursor-pointer" />
+                </div>
+            </div>
+            {menuOpen && (
+                <div className="lg:hidden text-sm sm:text-base md:text-lg lg:text-xl bg-white px-4 py-2 space-y-2">
+                    {paragraphs.map((text, index) => (
+                        <p className="cursor-pointer border-b border-gray-400" key={index}>
+                            {text}
+                        </p>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+export default Header;
