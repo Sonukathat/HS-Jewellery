@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaInstagram } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CiSearch, CiShoppingCart } from "react-icons/ci";
@@ -7,19 +7,20 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import machki from "../assets/8D6D93BB-F102-40BF-9634-90888310B860.webp";
 
 function Header() {
-    const texts = ["Cash On Delivery Upto 2000/-","Flat 10% off on Prepaid orders above 2000/-","Free shipping on orders above 1500/-"];
-    const [index,setIndex] = useState(0);
-    
+    const texts = ["Cash On Delivery Upto 2000/-", "Flat 10% off on Prepaid orders above 2000/-", "Free shipping on orders above 1500/-"];
+    const [index, setIndex] = useState(0);
 
-    useEffect(()=>{
+
+    useEffect(() => {
         const interval = setInterval(() => {
-            setIndex((prevIndex)=>(prevIndex+1)%texts.length);
-        },6000);
+            setIndex((prevIndex) => (prevIndex + 1) % texts.length);
+        }, 6000);
 
-        return ()=> clearInterval(interval);
+        return () => clearInterval(interval);
     })
 
     const [menuOpen, setMenuOpen] = useState(false);
+    const [search, setSearch] = useState(false);
 
     const paragraphs = [
         "Shop All",
@@ -27,7 +28,6 @@ function Header() {
         "Necklaces",
         "Bracelets",
         "Rings",
-        "Last Chance to Buy",
         "Natural Stone Jewelry",
         "Chunky Bangles",
     ];
@@ -36,7 +36,7 @@ function Header() {
         <div className="w-full">
             <div className="bg-[#f8dcdb] py-2 flex justify-center sm:justify-around">
                 <div className="hidden sm:block">
-                    <a href="https://www.instagram.com/" target="_blank"><FaInstagram className="text-xl cursor-pointer"/></a>
+                    <a href="https://www.instagram.com/" target="_blank"><FaInstagram className="text-xl cursor-pointer" /></a>
                 </div>
                 <div className="flex items-center text-sm">
                     <IoIosArrowBack />
@@ -46,7 +46,7 @@ function Header() {
             </div>
             <div className="bg-white flex justify-evenly items-center p-2 lg:p-0 lg:py-2">
                 <div className="block lg:hidden">
-                    <RxHamburgerMenu className="text-2xl cursor-pointer" onClick={() => setMenuOpen(!menuOpen)}/>
+                    <RxHamburgerMenu className="text-2xl cursor-pointer" onClick={() => setMenuOpen(!menuOpen)} />
                 </div>
                 <div>
                     <img src={machki} alt="machki" className="w-36 xl:w-44" />
@@ -59,7 +59,7 @@ function Header() {
                     ))}
                 </div>
                 <div className="flex gap-4 xl:gap-8">
-                    <CiSearch className="text-2xl cursor-pointer" />
+                    <CiSearch className="text-2xl cursor-pointer" onClick={() => setSearch(!search)} />
                     <CgProfile className="text-2xl cursor-pointer" />
                     <CiShoppingCart className="text-2xl cursor-pointer" />
                 </div>
@@ -73,6 +73,13 @@ function Header() {
                     ))}
                 </div>
             )}
+            {search && (
+                <div className="absolute top-9 left-1/4 flex justify-center rounded-sm sm:w-1/2 lg:p-4 bg-white">
+                    <input type="text" placeholder="search" className="border border-gray-400 rounded p- w-40 sm:w-64 md:p-1 lg:w-96"  />
+                </div>
+            )
+
+            }
         </div>
     );
 }
