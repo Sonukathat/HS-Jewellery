@@ -74,7 +74,7 @@ function Header() {
                 </div>
             )}
             {search && (
-                <div className="absolute top-9 left-1/4 flex justify-center rounded-sm sm:w-1/2 lg:p-4 bg-white">
+                <div className="absolute top-9 left-1/4 lg:top-12 xl:top-14 flex justify-center rounded-sm sm:w-1/2 lg:p-4 bg-white">
                     <input type="text" placeholder="search" className="border border-gray-400 rounded p- w-40 sm:w-64 md:p-1 lg:w-96"  />
                 </div>
             )
