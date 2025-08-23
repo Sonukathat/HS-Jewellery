@@ -4,6 +4,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CiSearch, CiShoppingCart } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Link } from "react-router-dom";
 import machki from "../assets/8D6D93BB-F102-40BF-9634-90888310B860.webp";
 
 function Header() {
@@ -60,8 +61,8 @@ function Header() {
                 </div>
                 <div className="flex gap-4 xl:gap-8">
                     <CiSearch className="text-2xl cursor-pointer" onClick={() => setSearch(!search)} />
-                    <CgProfile className="text-2xl cursor-pointer" />
-                    <CiShoppingCart className="text-2xl cursor-pointer" />
+                    <Link to="/signin"><CgProfile className="text-2xl" /></Link>
+                    <Link to="/cart"><CiShoppingCart className="text-2xl" /></Link>
                 </div>
             </div>
             {menuOpen && (

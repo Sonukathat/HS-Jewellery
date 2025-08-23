@@ -1,3 +1,4 @@
+import { Routes, Route} from "react-router-dom";
 import Bracelets from "./components/Bracelets"
 import Chunkybangle from "./components/Chunkybangle"
 import Earings from "./components/Earings"
@@ -13,17 +14,17 @@ import Signin from "./components/Signin"
 function App() {
   return (
     <>
-      <Header/>
-      {/* <Main/> */}
-      {/* <Footer/> */}
-      {/* <Signin/> */}
-      {/* <Emptycart/> */}
-      {/* <Product/> */}
-      {/* <Earings/> */}
-      {/* <Bracelets/> */}
-      {/* <Rings/> */}
-      {/* <Naturalstone/> */}
-      {/* <Chunkybangle/> */}
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Header />
+            <Main />
+            <Footer />
+          </>
+        }/>
+        <Route path="/signin" element={<Signin/>}/>
+        <Route path="/cart" element={<Emptycart/>}/>
+      </Routes>
     </>
   )
 }
