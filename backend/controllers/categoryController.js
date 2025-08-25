@@ -13,9 +13,9 @@ export const createCategory = async (req, res) => {
         }
 
         const newCategory = new Category({ name, description, image });
-        await newCategory.save();
+        const addCateg = await newCategory.save();
 
-        res.status(200).json({ success: true })
+        res.status(200).json({ success: true, addCateg })
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
@@ -23,21 +23,13 @@ export const createCategory = async (req, res) => {
 
 export const getCategory = async (req, res) => {
     try {
-        const { name } = req.body;
 
-        if (!name) {
-            res.status(400).json({
-                success: true,
-                message: "category name is required"
-            })
-        }
-
-        const categories = await Category.find({ name });
+        const categories = await Category.find();
 
         if (categories.length === 0) {
             res.status(400).json({
                 success: false,
-                message: "NO category found with this name"
+                message: "category is empty"
             })
         }
 
@@ -52,22 +44,29 @@ export const getCategory = async (req, res) => {
 
 export const updateCategory = async (req, res) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const { name } = req.body;
 
-        if(!mongoose.Types.ObjectId.isValid(id)){
+        if(!name){
             return res.status(400).json({
                 success:false,
-                message:"Invalid id formate"
+                message:"name field is required"
             })
         }
 
-        const updated = await Category.findByIdAndUpdate(id,{ name },{new:true});
-        
-        if(!updated){
+        if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({
-                success:false,
-                message:"id not found"
+                success: false,
+                message: "Invalid id formate"
+            })
+        }
+
+        const updated = await Category.findByIdAndUpdate(id, { name }, { new: true });
+
+        if (!updated) {
+            return res.status(400).json({
+                success: false,
+                message: "id not found"
             })
         }
 
@@ -80,20 +79,20 @@ export const updateCategory = async (req, res) => {
     }
 }
 
-export const deleteCategory = async (req,res)=>{
-    const {id} = req.params;
+export const deleteCategory = async (req, res) => {
+    const { id } = req.params;
 
     const deleted = await Category.findByIdAndDelete(id);
 
-    if(!deleted){
+    if (!deleted) {
         return res.status(200).json({
-            success:true,
-            message:"item not found"
+            success: true,
+            message: "item not found"
         })
     }
 
     res.status(200).json({
-        success:true,
-        message:"item deleted"
+        success: true,
+        message: "item deleted"
     })
 }
