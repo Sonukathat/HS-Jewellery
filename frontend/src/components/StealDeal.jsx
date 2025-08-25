@@ -22,8 +22,8 @@ function StealDeal() {
             </div>
             <div className='grid grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 lg:gap-4'>
                 {imageUrls.map((src, i) => (
-                    <div key={i} className='border border-gray-200 rounded-md hover:scale-[1.01] hover:border-gray-500 transition-all duration-300 ease-in-out'>
-                        <img src={src} alt="jewe" className='h-96 w-full rounded-t-md'  />
+                    <div key={i} className='border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out'>
+                        <img src={src} alt="jewe" className='h-96 w-full rounded-t-md transition-transform duration-500 ease-in-out transform hover:scale-101'  />
                         <button className='bg-green-950 text-white px-3 py-1 rounded-md relative left-2 bottom-8 text-sm'>Sale</button>
                         <p className='mt-2 ml-5'>Heart Multi-Color Y-Necklace</p>
                         <div className='flex'>

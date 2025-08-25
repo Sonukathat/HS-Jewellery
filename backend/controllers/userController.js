@@ -7,7 +7,7 @@ export const createUser = async (req,res)=>{
         if(!name || !email || !password || !isAdmin){
             return res.status(400).json({
                 success:false,
-                message:"Name and Age are required"
+                message:"All field are required"
             })
         }
         
@@ -17,7 +17,7 @@ export const createUser = async (req,res)=>{
         const newUser = new User({name,email,password:hashedPassword,isAdmin});
         await newUser.save();
 
-        res.status(200).json(newUser);
+        res.status(200).json({success:true});
     } catch (error) {
         res.status(500).json({message:error.message})
     }
@@ -47,22 +47,3 @@ export const loginUser = async(req,res)=>{
     }
 }
 
-// export const login = async(req,res)=>{
-//     try {
-//         const {name} = req.body;
-//         const foundUser = await User.findOne({name});
-//         if(!foundUser){
-//             return res.status(400).json({
-//                 success:false,
-//                 message:"user not found"
-//             })
-//         }
-
-//         res.status(200).json({
-//             success:true,
-//             user:foundUser
-//         })
-//     } catch (error) {
-//         res.status(500).json({message:error.message})
-//     }
-// }
