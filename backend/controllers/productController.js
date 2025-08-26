@@ -13,6 +13,10 @@ export const createProduct = async (req, res) => {
 export const getProduct = async (req,res)=>{
     try {
         const product = await Product.find();
+
+        if(product.length===0){
+            return res.status(404).json({success:false,message:"NO product found"})
+        }
         res.status(200).json({success:true,product})
     } catch (error) {
         res.status(500).json({error:error.message});
