@@ -12,10 +12,24 @@ export const createProduct = async (req, res) => {
 
 export const getProduct = async (req,res)=>{
     try {
-        const product = await Product.find();
+        const products = await Product.find();
 
-        if(product.length===0){
+        if(products.length===0){
             return res.status(404).json({success:false,message:"NO product found"})
+        }
+        res.status(200).json({success:true,products})
+    } catch (error) {
+        res.status(500).json({error:error.message});
+    }
+}
+
+export const getProductbyid = async (req,res)=>{
+    try {
+        const {id} = req.params;
+        const product = await Product.findById(id);
+
+        if(!product){
+            return res.status(404).json({success:false,message:"product not found"})
         }
         res.status(200).json({success:true,product})
     } catch (error) {
@@ -32,7 +46,7 @@ export const updateProduct = async (req,res)=>{
             return res.status(400).json({message:"Product not found"})
         }
 
-        res.status(200).json({message:"product updated success"})
+        res.status(200).json({success:true,message:"product updated success"})
 
     } catch (error) {
          res.status(500).json({error:error.message});
