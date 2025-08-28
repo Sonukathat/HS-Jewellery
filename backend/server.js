@@ -4,6 +4,7 @@ import 'dotenv/config'
 import userRoutes from './routes/userRoute.js'
 import categoryRoutes from './routes/categoryRoute.js'
 import productRoutes from './routes/productRoute.js'
+import orderRoutes from './routes/orderRoute.js'
 
 connectDB();
 const app = express();
@@ -15,6 +16,7 @@ const port = process.env.PORT || 3000;
 app.use('/users',userRoutes);
 app.use('/category',categoryRoutes);
 app.use('/product',productRoutes);
+app.use('/order',orderRoutes)
 
 
 app.listen(port,()=>{
