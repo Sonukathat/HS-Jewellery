@@ -1,49 +1,79 @@
 import bcrypt from 'bcrypt'
 import User from "../models/userModel.js";
+import jwt from "jsonwebtoken";
 
-export const createUser = async (req,res)=>{
+
+export const createUser = async (req, res) => {
     try {
-        const {name,email,password,isAdmin} = req.body;
-        if(!name || !email || !password || !isAdmin){
+        const { name, email, password, isAdmin } = req.body;
+        if (!name || !email || !password || !isAdmin) {
             return res.status(400).json({
-                success:false,
-                message:"All field are required"
+                success: false,
+                message: "All field are required"
             })
         }
-        
-        const saltRound = 10;
-        const hashedPassword = await bcrypt.hash(password,saltRound);
 
-        const newUser = new User({name,email,password:hashedPassword,isAdmin});
+        const saltRound = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRound);
+
+        const newUser = new User({ name, email, password: hashedPassword, isAdmin });
         await newUser.save();
 
-        res.status(200).json({success:true});
+        res.status(200).json({ success: true });
     } catch (error) {
-        res.status(500).json({message:error.message})
+        res.status(500).json({ message: error.message })
     }
 }
 
-export const loginUser = async(req,res)=>{
+export const loginUser = async (req, res) => {
     try {
-        const {email,password} = req.body;
+        const { email, password } = req.body;
 
-        const user = await User.findOne({email})
+        const user = await User.findOne({ email })
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            });
+        }
 
         const isMatch = await bcrypt.compare(password, user.password);
 
-        if(!isMatch){
+        if (!isMatch) {
             return res.status(401).json({
-                success:false,
-                message:"Invalid password"
+                success: false,
+                message: "Invalid password"
             })
         }
 
+        const token = jwt.sign(
+            { id: user._id, isAdmin: user.isAdmin },
+            process.env.JWT_SECRET,
+            { expiresIn: "1h" }
+        );
+
         res.status(200).json({
-            success:true,
-            data:user
+            success: true,
+            token
         })
     } catch (error) {
-        res.status(500).json({message:error.message})
+        res.status(500).json({ message: error.message })
     }
 }
 
+
+export const getUserprofile = async (req, res) => {
+    try {
+        if (!req.user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: req.user,
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
