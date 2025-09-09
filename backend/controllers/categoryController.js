@@ -2,24 +2,27 @@ import mongoose from "mongoose";
 import Category from "../models/categoryModel.js";
 
 export const createCategory = async (req, res) => {
-    try {
-        const { name, description, image } = req.body;
+  try {
+    const { name, description } = req.body;
 
-        if (!name || !description || !image) {
-            return res.status(400).json({
-                success: false,
-                message: "All field are required"
-            })
-        }
-
-        const newCategory = new Category({ name, description, image });
-        const addCateg = await newCategory.save();
-
-        res.status(200).json({ success: true, addCateg })
-    } catch (error) {
-        res.status(500).json({ message: error.message })
+    if (!name || !description || !req.file) {
+      return res.status(400).json({ success: false, message: "All fields required" });
     }
-}
+
+    const category = await Category.create({
+      name,
+      description,
+      image: req.file.filename 
+    });
+
+    res.status(201).json({
+      success: true,
+      category
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 export const getCategory = async (req, res) => {
     try {
@@ -47,10 +50,10 @@ export const updateCategory = async (req, res) => {
         const { id } = req.params;
         const { name } = req.body;
 
-        if(!name){
+        if (!name) {
             return res.status(400).json({
-                success:false,
-                message:"name field is required"
+                success: false,
+                message: "name field is required"
             })
         }
 
