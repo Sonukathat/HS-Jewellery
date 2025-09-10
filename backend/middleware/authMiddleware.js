@@ -1,6 +1,6 @@
-
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
+
 
 export const protect = async (req, res, next) => {
   let token;
@@ -25,4 +25,12 @@ export const protect = async (req, res, next) => {
   if (!token) {
     return res.status(401).json({ message: "Not authorized, no token" });
   }
+};
+
+
+export const isAdmin = (req, res, next) => {
+  if (!req.user.isAdmin) {
+    return res.status(403).json({ message: "Access denied: Admin only" });
+  }
+  next();
 };

@@ -6,17 +6,19 @@ export const createCategory = async (req, res) => {
     try {
         const { name, description } = req.body;
 
-        if (!name || !description || !req.file) {
+        if (!name || !description || !req.files || req.files.length === 0) {
             return res.status(400).json({ success: false, message: "All fields required" });
         }
 
-
-        const imagePath = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    
+        const imagePaths = req.files.map(file =>
+            `${req.protocol}://${req.get("host")}/uploads/${file.filename}`
+        );
 
         const category = await Category.create({
             name,
             description,
-            image: imagePath
+            images: imagePaths 
         });
 
         res.status(201).json({
@@ -28,6 +30,7 @@ export const createCategory = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
 
 
 
@@ -69,7 +72,7 @@ export const updateCategory = async (req, res) => {
         if (name) updateData.name = name;
         if (description) updateData.description = description;
 
-        
+
         if (req.file) {
             const imagePath = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
             updateData.image = imagePath;

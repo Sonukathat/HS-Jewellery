@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 export const createUser = async (req, res) => {
     try {
         const { name, email, password, isAdmin } = req.body;
-        if (!name || !email || !password || !isAdmin) {
+        if (!name || !email || !password) {
             return res.status(400).json({
                 success: false,
                 message: "All field are required"
@@ -16,7 +16,12 @@ export const createUser = async (req, res) => {
         const saltRound = 10;
         const hashedPassword = await bcrypt.hash(password, saltRound);
 
-        const newUser = new User({ name, email, password: hashedPassword, isAdmin });
+        const newUser = new User({
+            name,
+            email,
+            password: hashedPassword,
+            isAdmin: false  
+        });
         await newUser.save();
 
         res.status(200).json({ success: true });
@@ -102,7 +107,7 @@ export const deleteUser = async (req, res) => {
             return res.status(404).json({ message: "User not found" });
         }
 
-        res.status(200).json({success:true,message:"User Deleted"});
+        res.status(200).json({ success: true, message: "User Deleted" });
 
     } catch (error) {
         res.status(500).json({ message: error.message });
