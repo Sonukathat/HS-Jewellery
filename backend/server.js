@@ -5,11 +5,13 @@ import userRoutes from './routes/userRoute.js'
 import categoryRoutes from './routes/categoryRoute.js'
 import productRoutes from './routes/productRoute.js'
 import orderRoutes from './routes/orderRoute.js'
-import path from 'path';
+import cors from 'cors'
+// import path from 'path';
 
 connectDB();
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 const port = process.env.PORT || 3000;

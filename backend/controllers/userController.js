@@ -24,7 +24,7 @@ export const createUser = async (req, res) => {
         });
         await newUser.save();
 
-        res.status(200).json({ success: true });
+        res.status(201).json({ success: true });
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
