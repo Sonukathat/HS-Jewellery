@@ -5,22 +5,32 @@ import axios from 'axios'
 
 function Trending() {
 
-    const[images,setImages]=useState([]);
+    const [images, setImages] = useState([]);
 
-    useEffect(()=>{
-       const fetchImages= async()=>{
-        try {
-            const res = await axios.get('http://localhost:5000/category/get');
-            setImages(res.data.categories[0].images);
-        } catch (error) {
-            console.error("Error fetching images:", error);
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const res = await axios.get('http://localhost:5000/category/get');
+
+                const category = res.data.categories;
+
+                const needed = category.filter(cat =>
+                    ["neckless", "rings", "jumka"].includes(cat.name)
+                );
+
+                const selectedImages = needed.flatMap(cat => cat.images.slice(0, 4));
+
+                setImages(selectedImages);
+
+            } catch (error) {
+                console.error("Error fetching images:", error);
+            }
         }
-       } 
 
-       fetchImages();
-    },[])
-    // console.log(images);
-    
+        fetchImages();
+    }, [])
+    console.log(images);
+
 
     return (
         <div className='flex flex-col gap-8'>
