@@ -29,7 +29,7 @@ function Trending() {
 
         fetchImages();
     }, [])
-    console.log(images);
+    // console.log(images);
 
 
     return (
