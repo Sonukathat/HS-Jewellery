@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 function Signin() {
   return (
@@ -12,11 +13,13 @@ function Signin() {
         </div>
         <div className="flex flex-col gap-4">
             <input className="border border-gray-300 px-4 py-2 rounded-md " type="text" placeholder="Email" />
+            <input className="border border-gray-300 px-4 py-2 rounded-md " type="password" placeholder="password" /> 
             <button className="bg-blue-800 cursor-pointer py-3 text-white rounded-md">Continue</button>
         </div>
         <div className="flex gap-4 text-sm text-blue-500">
             <a className="hover:underline" href="#">Privacy policy</a>
             <a className="hover:underline" href="#">Terms of service</a>
+            <Link className="underline" to="/signup">Signup</Link>
         </div>
       </div>
     </div>

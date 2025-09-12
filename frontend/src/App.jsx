@@ -10,6 +10,7 @@ import Naturalstone from "./components/Naturalstone"
 import Product from "./components/Product"
 import Rings from "./components/Rings"
 import Signin from "./components/Signin"
+import Signup from "./components/Signup";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           </>
         }/>
         <Route path="/signin" element={<Signin/>}/>
+        <Route path="/signup" element={<Signup/>}/>
         <Route path="/cart" element={<Emptycart/>}/>
       </Routes>
     </>
