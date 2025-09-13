@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 function Emptycart() {
   return (
@@ -10,7 +11,7 @@ function Emptycart() {
       </div>
       <div>
         <h2 className="text-xl">Have an account?</h2>
-        <p className="text-md"><a className="border-b hover:border-b-3" href="#">Log in</a> to check out faster.</p>
+        <p className="text-md"><Link to="/signin" className="border-b hover:border-b-3">Log in</Link> to check out faster.</p>
       </div>
     </div>
   )

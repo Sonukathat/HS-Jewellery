@@ -3,7 +3,7 @@ function Natural() {
   return (
     <div className='flex flex-col items-center px-4 lg:flex-row lg:justify-around'>
       <div>
-        <img src="https://www.machki.com/cdn/shop/collections/IMG_6312.jpg?v=1753973587&width=535" alt="stone jewelry" className='h-auto w-full rounded-l-md sm:h-96 lg:h-[30rem]' />
+        <img src="https://img.perniaspopupshop.com/catalog/product/p/h/PHRZ062405_1.jpg?impolicy=detailimageprod" alt="stone jewelry" className='h-auto w-full rounded-l-md sm:h-96 lg:h-[30rem]' />
       </div>
       <div className='flex flex-col items-center lg:w-1/2'>
         <h2 className='mt-20 text-3xl'>Natural Handcrafted Stone Jewelry</h2>

@@ -8,7 +8,7 @@ function Blogpost() {
             <div className="px-4">
                 <div className="border border-gray-200 max-w-96 md:ml-16 xl:ml-32">
                     <div>
-                        <img src="https://www.machki.com/cdn/shop/articles/IMG_4993.jpg?v=1752435655&width=720" alt="neckless" className="h-64 w-full rounded-t-md" />
+                        <img src="https://images.unsplash.com/photo-1633934542430-0905ccb5f050?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8amV3ZWxlcnl8ZW58MHwwfDB8fHww" alt="neckless" className="h-64 w-full rounded-t-md" />
                     </div>
                     <div className="p-8">
                         <p className="text-2xl">2025 Jewelry Trend</p>

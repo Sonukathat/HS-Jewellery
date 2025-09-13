@@ -1,11 +1,31 @@
-import Alljewelery from "./common/Alljewelery"
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Alljewelery from "./common/Alljewelery";
 
 function Bracelets() {
+  const [braceletImages, setBraceletImages] = useState([]);
+
+  useEffect(() => {
+    const fetchBracelets = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/category/get");
+        
+        setBraceletImages(res.data.categories[0].images);
+      } catch (err) {
+        console.error("Error fetching bracelets:", err);
+      }
+    };
+
+    fetchBracelets();
+  }, []);
+
   return (
-    <>
-      <Alljewelery heading="Bracelets" headingimage="https://images.unsplash.com/photo-1723522938779-d434eb9294d4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJyYWNlbGV0cyUyMGpld2VsZXJ5fGVufDB8MHwwfHx8MA%3D%3D" images="https://images.unsplash.com/photo-1730406928840-afab99cbdb1c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJyYWNlbGV0cyUyMGpld2VsZXJ5fGVufDB8MXwwfHx8MA%3D%3D"/>
-    </>
-  )
+    <Alljewelery
+      heading="Bracelets"
+      headingimage="https://images.unsplash.com/photo-1723522938779-d434eb9294d4?w=600&auto=format&fit=crop&q=60"
+      images={braceletImages}
+    />
+  );
 }
 
-export default Bracelets
+export default Bracelets;
