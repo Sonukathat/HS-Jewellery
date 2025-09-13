@@ -23,14 +23,14 @@ function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [search, setSearch] = useState(false);
 
-    const paragraphs = [
-        "Shop All",
-        "Earrings",
-        "Necklaces",
-        "Bracelets",
-        "Rings",
-        "Natural Stone Jewelry",
-        "Chunky Bangles",
+    const items = [
+        { name: "Shop All", path: "/shop-all" },
+        { name: "Earrings", path: "/earings" },
+        { name: "Necklaces", path: "/necklaces" },
+        { name: "Bracelets", path: "/bracelets" },
+        { name: "Rings", path: "/rings" },
+        { name: "Natural Stone Jewelry", path: "/natural-stone-jewelry" },
+        { name: "Chunky Bangles", path: "/chunky-bangles" },
     ];
 
     return (
@@ -53,10 +53,14 @@ function Header() {
                     <img src={machki} alt="machki" className="w-36 xl:w-44" />
                 </div>
                 <div className="hidden lg:flex gap-3 xl:gap-8">
-                    {paragraphs.map((text, index) => (
-                        <p className="cursor-pointer text-sm" key={index}>
-                            {text}
-                        </p>
+                    {items.map((item, index) => (
+                        <Link
+                            to={item.path}
+                            key={index}
+                            className="cursor-pointer text-sm"
+                        >
+                            {item.name}
+                        </Link>
                     ))}
                 </div>
                 <div className="flex gap-4 xl:gap-8">
@@ -76,7 +80,7 @@ function Header() {
             )}
             {search && (
                 <div className="absolute top-9 left-1/4 lg:top-12 xl:top-14 flex justify-center rounded-sm sm:w-1/2 lg:p-4 bg-white">
-                    <input type="text" placeholder="search" className="border border-gray-400 rounded p- w-40 sm:w-64 md:p-1 lg:w-96"  />
+                    <input type="text" placeholder="search" className="border border-gray-400 rounded p- w-40 sm:w-64 md:p-1 lg:w-96" />
                 </div>
             )
 

@@ -26,6 +26,11 @@ function App() {
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/cart" element={<Emptycart/>}/>
+        <Route path="/earings" element={<Earings/>}/>
+        <Route path="/bracelets" element={<Bracelets/>}/>
+        <Route path="/rings" element={<Rings/>}/>
+        <Route path="/natural-stone-jewelry" element={<Naturalstone/>}/>
+        <Route path="/chunky-bangles" element={<Chunkybangle/>}/>
       </Routes>
     </>
   )
