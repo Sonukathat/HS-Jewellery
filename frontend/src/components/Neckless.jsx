@@ -10,7 +10,7 @@ function Neckless() {
       try {
         const res = await axios.get("http://localhost:5000/category/get");
         // console.log(res.data.categories[4].images)
-        setNecklessImages(res.data.categories[4].images); 
+        setNecklessImages(res.data.categories[0].images.urls); 
       } catch (err) {
         console.error("Error fetching Neckless:", err);
       }

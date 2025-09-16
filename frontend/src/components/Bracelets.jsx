@@ -10,7 +10,7 @@ function Bracelets() {
       try {
         const res = await axios.get("http://localhost:5000/category/get");
         
-        setBraceletImages(res.data.categories[0].images);
+        setBraceletImages(res.data.categories[2].images.urls);
       } catch (err) {
         console.error("Error fetching bracelets:", err);
       }

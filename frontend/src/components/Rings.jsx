@@ -9,7 +9,7 @@ function Rings() {
     const fetchRings = async () => {
       try {
         const res = await axios.get("http://localhost:5000/category/get");
-        setRingImages(res.data.categories[5].images);
+        setRingImages(res.data.categories[5].images.urls);
       } catch (err) {
         console.error("Error fetching rings:", err);
       }
