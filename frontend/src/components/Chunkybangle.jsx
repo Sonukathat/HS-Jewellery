@@ -9,7 +9,7 @@ function Chunkybangle() {
     const fetchBangles = async () => {
       try {
         const res = await axios.get("http://localhost:5000/category/get");
-        setBangleImages(res.data.categories[1].images);
+        setBangleImages(res.data.categories[3].images.urls);
       } catch (err) {
         console.error("Error fetching bangles:", err);
       }
