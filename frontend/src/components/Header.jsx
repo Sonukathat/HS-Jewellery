@@ -25,7 +25,7 @@ function Header() {
 
     const items = [
         { name: "Shop All", path: "/shop-all" },
-        { name: "Earrings", path: "/earings" },
+        { name: "Earrings", path: "/earrings" },
         { name: "Necklaces", path: "/necklaces" },
         { name: "Bracelets", path: "/bracelets" },
         { name: "Rings", path: "/rings" },

@@ -9,8 +9,8 @@ function Earings() {
     const fetchEarrings = async () => {
       try {
         const res = await axios.get("http://localhost:5000/category/get");
-        // console.log(res.data.categories[2].images)
-        setEarringImages(res.data.categories[2].images); 
+
+        setEarringImages(res.data.categories[4].images.urls);
       } catch (err) {
         console.error("Error fetching earrings:", err);
       }
