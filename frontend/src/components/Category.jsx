@@ -10,10 +10,10 @@ function Category() {
         const res = await axios.get('http://localhost:5000/category/get');
         const categories = res.data.categories;
 
-        
+
         const selectedImages = categories.map(cat => ({
           name: cat.name,
-          image: cat.images[0] 
+          image: cat.images.urls[0] 
         }));
 
         setcatImg(selectedImages);
@@ -32,7 +32,10 @@ function Category() {
       </div>
       <div className='grid grid-cols-1 px-4 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 lg:px-44'>
         {catImg.map((cat, index) => (
-          <div key={index} className='border border-gray-200 rounded-b-sm xl:pb-10 hover:scale-[1.01] hover:border-gray-500 transition-all duration-300 ease-in-out'>
+          <div 
+            key={index} 
+            className='border border-gray-200 rounded-b-sm xl:pb-10 hover:scale-[1.01] hover:border-gray-500 transition-all duration-300 ease-in-out'
+          >
             <img
               src={cat.image}
               alt={cat.name}

@@ -16,8 +16,8 @@ function Main() {
       <Trending />
       <Category />
       <Natural />
-      <StealDeal />
-      <Jhumkas />
+      {/* <StealDeal /> */}
+      {/* <Jhumkas /> */}
       <Getknow />
       <Blogpost />
       <Feedback />

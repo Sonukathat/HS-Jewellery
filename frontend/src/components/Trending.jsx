@@ -7,43 +7,32 @@ function Trending() {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/category/get");
-                const category = res.data.categories;
+                let res = await axios.get('http://localhost:5000/category/get');
+                let first3Categ = res.data.categories.slice(0, 3);
 
-                const needed = category.filter((cat) =>
-                    ["neckless", "rings", "jumka"].includes(cat.name)
-                );
+                let allProducts = [];
 
-                const names = [
-                    "Royal Jumka",
-                    "Pearl Jumka",
-                    "Antique Jumka",
-                    "Designer Jumka",
-                    "Diamond Necklace",
-                    "Gold Necklace",
-                    "Emerald Necklace",
-                    "Modern Necklace",
-                    "Classic Ring",
-                    "Silver Ring",
-                    "Platinum Ring",
-                    "Ruby Ring",
-                ];
+                first3Categ.forEach((category) => {
+                    let imagesData = category.images;
 
-                const selected = needed
-                    .flatMap((cat) => cat.images.slice(0, 4))
-                    .map((img, index) => ({
-                        image: img,
-                        name: names[index] || "Jewellery",
+                    // Har category se sirf 4 items lo
+                    let combined = imagesData.details.slice(0, 4).map((item, index) => ({
+                        ...item,
+                        image: imagesData.urls[index],
                     }));
 
-                setProducts(selected);
-            } catch (error) {
-                console.error("Error fetching images:", error);
-            }
-        };
+                    // All products me add kar do
+                    allProducts = [...allProducts, ...combined];
+                });
 
-        fetchImages();
-    }, []);
+                setProducts(allProducts);
+
+            } catch (error) {
+                console.log("Error Fetching Images", error);
+            }
+        }
+        fetchImages()
+    }, [])
 
     return (
         <div className="flex flex-col gap-8">
@@ -62,7 +51,7 @@ function Trending() {
                             className="h-96 w-full transition-transform duration-500 ease-in-out transform hover:scale-101"
                         />
                         <p className="mt-8 ml-5">{item.name}</p>
-                        <p className="my-3 ml-5">Rs 1,099.00</p>
+                        <p className="my-3 ml-5">{item.price}</p>
                     </div>
                 ))}
             </div>
