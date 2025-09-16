@@ -29,7 +29,7 @@ function Header() {
         { name: "Necklaces", path: "/necklaces" },
         { name: "Bracelets", path: "/bracelets" },
         { name: "Rings", path: "/rings" },
-        { name: "Natural Stone Jewelry", path: "/natural-stone-jewelry" },
+        { name: "Jumka", path: "/jumka" },
         { name: "Chunky Bangles", path: "/chunky-bangles" },
     ];
 
