@@ -4,7 +4,7 @@ import Category from "../models/categoryModel.js";
 
 export const createCategory = async (req, res) => {
     try {
-        const { name, description } = req.body;
+        const { name, description, details } = req.body;
 
         if (!name || !description || !req.files || req.files.length === 0) {
             return res.status(400).json({ success: false, message: "All fields required" });
@@ -15,10 +15,19 @@ export const createCategory = async (req, res) => {
             `${req.protocol}://${req.get("host")}/uploads/${file.filename}`
         );
 
+        
+        let parsedDetails = [];
+        if (details) {
+            parsedDetails = JSON.parse(details);
+        }
+
         const category = await Category.create({
             name,
             description,
-            images: imagePaths 
+            images: {
+                urls: imagePaths,
+                details: parsedDetails,
+            }
         });
 
         res.status(201).json({
@@ -30,7 +39,6 @@ export const createCategory = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
-
 
 
 

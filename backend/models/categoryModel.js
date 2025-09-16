@@ -1,9 +1,19 @@
 import mongoose from "mongoose";
 
-const categorySchema = new mongoose.Schema({
-  name:        { type: String, required: true },
-  description: { type: String, required: true },
-   images:      [{ type: String }], 
-}, [{ timestamps: true }]);
-
+const categorySchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    images: {
+      urls: [String], 
+      details: [
+        {
+          name: String,
+          price: Number,
+        },
+      ],
+    },
+  },
+  { timestamps: true }
+);
 export default mongoose.model("Category", categorySchema);
