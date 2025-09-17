@@ -1,6 +1,6 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-function Alljewelery({ heading, headingimage, images = [] }) {
+function Details({ heading, headingimage, images = [] }) {
   const info = [
     "Necklace","Bracelet","Earrings","Ring","Anklet","Pendant",
     "Bangle","Brooch","Tiara","Choker","Cufflinks","Hairpin",
@@ -45,4 +45,4 @@ function Alljewelery({ heading, headingimage, images = [] }) {
   );
 }
 
-export default Alljewelery;
+export default Details;

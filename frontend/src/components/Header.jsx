@@ -71,10 +71,15 @@ function Header() {
             </div>
             {menuOpen && (
                 <div className="lg:hidden text-sm sm:text-base md:text-lg lg:text-xl bg-white px-4 py-2 space-y-2">
-                    {paragraphs.map((text, index) => (
-                        <p className="cursor-pointer border-b border-gray-400" key={index}>
-                            {text}
-                        </p>
+                    {items.map((item, index) => (
+                        <Link
+                            to={item.path}
+                            key={index}
+                            className="block cursor-pointer border-b border-gray-400 py-1"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            {item.name}
+                        </Link>
                     ))}
                 </div>
             )}
