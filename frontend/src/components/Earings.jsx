@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Alljewelery from "./common/Alljewelery";
+import Details from "./common/Details";
 
 function Earings() {
   const [earringImages, setEarringImages] = useState([]);
@@ -20,7 +20,7 @@ function Earings() {
   }, []);
 
   return (
-    <Alljewelery
+    <Details
       heading="Earrings"
       headingimage="https://images.unsplash.com/photo-1608613381851-6a058de0dc11?w=600&auto=format&fit=crop&q=60"
       images={earringImages}

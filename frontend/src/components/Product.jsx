@@ -1,4 +1,4 @@
-import Alljewelery from "./common/Alljewelery"
+import Alljewelery from "./common/Details"
 
 function Product() {
   return (

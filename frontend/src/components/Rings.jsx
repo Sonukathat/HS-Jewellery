@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Alljewelery from "./common/Alljewelery";
+import Details from "./common/Details";
 
 function Rings() {
   const [ringImages, setRingImages] = useState([]);
@@ -18,7 +18,7 @@ function Rings() {
   }, []);
 
   return (
-    <Alljewelery
+    <Details
       heading="Rings"
       headingimage="https://images.unsplash.com/photo-1654700005435-8af6c06f3716?w=600&auto=format&fit=crop&q=60"
       images={ringImages}

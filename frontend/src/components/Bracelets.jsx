@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Alljewelery from "./common/Alljewelery";
+import Details from "./common/Details";
 
 function Bracelets() {
   const [braceletImages, setBraceletImages] = useState([]);
@@ -20,7 +20,7 @@ function Bracelets() {
   }, []);
 
   return (
-    <Alljewelery
+    <Details
       heading="Bracelets"
       headingimage="https://images.unsplash.com/photo-1723522938779-d434eb9294d4?w=600&auto=format&fit=crop&q=60"
       images={braceletImages}
