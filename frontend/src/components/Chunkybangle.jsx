@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Details from "./common/Details";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function Chunkybangle() {
   const [bangleImages, setBangleImages] = useState([]);
@@ -15,14 +17,18 @@ function Chunkybangle() {
       }
     };
     fetchBangles();
-  }, []); 
+  }, []);
 
   return (
-    <Details
-      heading="Chunky Bangles"
-      headingimage="https://media.istockphoto.com/id/1396888542/photo/traditional-indian-gold-bangles.webp?a=1&b=1&s=612x612&w=0&k=20&c=zMCgcyRis5Xn2ZEno7kt7Yj3Eju2ORzz4QuhNs0ucus="
-      images={bangleImages}
-    />
+    <>
+      <Header/>
+      <Details
+        heading="Chunky Bangles"
+        headingimage="https://media.istockphoto.com/id/1396888542/photo/traditional-indian-gold-bangles.webp?a=1&b=1&s=612x612&w=0&k=20&c=zMCgcyRis5Xn2ZEno7kt7Yj3Eju2ORzz4QuhNs0ucus="
+        images={bangleImages}
+      />
+      <Footer/>
+    </>
   );
 }
 

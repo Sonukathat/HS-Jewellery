@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Details from "./common/Details";
 import axios from "axios";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function Shopall() {
   const [all, setAll] = useState([]);
@@ -27,11 +29,13 @@ function Shopall() {
 
   return (
     <>
+      <Header/>
       <Details
         heading="Shop-All"
         headingimage="https://images.unsplash.com/photo-1707222611166-f80ded88b677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTZ8fGp1bWtoYSUyMGpld2VsZXJ5fGVufDB8MHwwfHx8MA%3D%3D"
         images={all}
       />
+      <Footer/>
     </>
   );
 }

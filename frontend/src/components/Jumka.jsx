@@ -2,6 +2,8 @@ import { useState } from "react"
 import Details from "./common/Details"
 import { useEffect } from "react";
 import axios from "axios";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function Jumka() {
   
@@ -21,7 +23,9 @@ function Jumka() {
 
   return (
     <>
+      <Header/>
       <Details heading="Jumka" headingimage="https://images.unsplash.com/photo-1707222611166-f80ded88b677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTZ8fGp1bWtoYSUyMGpld2VsZXJ5fGVufDB8MHwwfHx8MA%3D%3D" images={jumka}/>
+      <Footer/>
     </>
   )
 }

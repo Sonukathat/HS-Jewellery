@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Details from "./common/Details";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function Earings() {
   const [earringImages, setEarringImages] = useState([]);
@@ -20,11 +22,15 @@ function Earings() {
   }, []);
 
   return (
-    <Details
-      heading="Earrings"
-      headingimage="https://images.unsplash.com/photo-1608613381851-6a058de0dc11?w=600&auto=format&fit=crop&q=60"
-      images={earringImages}
-    />
+    <>
+      <Header/>
+      <Details
+        heading="Earrings"
+        headingimage="https://images.unsplash.com/photo-1608613381851-6a058de0dc11?w=600&auto=format&fit=crop&q=60"
+        images={earringImages}
+      />
+      <Footer/>
+    </>
   );
 }
 
