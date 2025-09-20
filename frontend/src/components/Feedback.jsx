@@ -31,14 +31,14 @@ function Feedback() {
     return (
         <div className="bg-[#7b614e] mt-8 py-6 flex flex-col gap-10">
             <div>
-                <h2 className="text-4xl text-white ml-4">Feedback</h2>
+                <h2 className="text-4xl text-white ml-4 font-serif">Feedback</h2>
             </div>
             <div className="flex flex-col gap-6">
                 <div className="grid grid-cols-1 gap-8 px-4 text-white text-center sm:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:px-16 xl:px-32">
                     {feedbacks.map((item, index) => (
                         <div key={index} className="h-72 bg-white/5 flex flex-col justify-baseline rounded-md p-6">
-                            <h2 className="text-2xl">{item.name}</h2>
-                            <p className="mt-4">{item.review}</p>
+                            <h2 className="text-2xl font-serif">{item.name}</h2>
+                            <p className="mt-4 font-serif">{item.review}</p>
                         </div>
                     ))
                     }

@@ -30,7 +30,7 @@ function StealDeal() {
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <h2 className="text-4xl py-10 ml-4">Steal the Deal</h2>
+        <h2 className="text-4xl py-10 ml-4 font-serif">Steal the Deal</h2>
       </div>
 
       <div className="grid grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 lg:gap-4">
@@ -47,7 +47,7 @@ function StealDeal() {
             <button className="bg-green-950 text-white px-3 py-1 rounded-md relative left-2 bottom-8 text-sm">
               Sale
             </button>
-            <p className="mt-2 ml-5">{item.name}</p>
+            <p className="mt-2 ml-5 font-serif">{item.name}</p>
             <div className="flex">
               <p className="my-3 ml-5 text-gray-400 line-through">
                 Rs {item.oldPrice || "1,099.00"}
