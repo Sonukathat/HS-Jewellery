@@ -1,33 +1,41 @@
-import { useState } from "react"
-import Details from "./common/Details"
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import Details from "./common/Details";
 import axios from "axios";
 import Header from "./Header";
 import Footer from "./Footer";
 
 function Jumka() {
-  
-  const[jumka,setJumka]=useState([]);
+  const [jumkas, setJumkas] = useState([]);
 
-  useEffect(()=>{
-    const fetchJumka = async () => {
+  useEffect(() => {
+    const fetchJumkas = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/category/get')
-        setJumka(res.data.categories[1].images.urls)
-      } catch (error) {
-        console.error("Error fetching earrings:", err);
+        const res = await axios.get('http://localhost:5000/category/get');
+        const jumkaCategory = res.data.categories[1];
+        const jumkaItems = jumkaCategory.images.urls.map((url, index) => ({
+          image: url,
+          name: jumkaCategory.images.details[index]?.name || "No Name",
+          price: jumkaCategory.images.details[index]?.price || "N/A"
+        }));
+        setJumkas(jumkaItems);
+      } catch (err) {
+        console.error("Error fetching jumkas:", err);
       }
-    }
-    fetchJumka()
-  },[])
+    };
+    fetchJumkas();
+  }, []);
 
   return (
     <>
-      <Header/>
-      <Details heading="Jumka" headingimage="https://images.unsplash.com/photo-1707222611166-f80ded88b677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTZ8fGp1bWtoYSUyMGpld2VsZXJ5fGVufDB8MHwwfHx8MA%3D%3D" images={jumka}/>
-      <Footer/>
+      <Header />
+      <Details
+        heading="Jumka"
+        headingimage="https://images.unsplash.com/photo-1707222611166-f80ded88b677?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTZ8fGp1bWtoYSUyMGpld2VsZXJ5fGVufDB8MHwwfHx8MA%3D%3D"
+        all={jumkas}
+      />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default Jumka
+export default Jumka;

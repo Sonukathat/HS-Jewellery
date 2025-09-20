@@ -5,13 +5,19 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 function Chunkybangle() {
-  const [bangleImages, setBangleImages] = useState([]);
+  const [bangles, setBangles] = useState([]);
 
   useEffect(() => {
     const fetchBangles = async () => {
       try {
         const res = await axios.get("http://localhost:5000/category/get");
-        setBangleImages(res.data.categories[3].images.urls);
+        const bangleCategory = res.data.categories[3];
+        const bangleItems = bangleCategory.images.urls.map((url, index) => ({
+          image: url,
+          name: bangleCategory.images.details[index]?.name || "No Name",
+          price: bangleCategory.images.details[index]?.price || "N/A"
+        }));
+        setBangles(bangleItems);
       } catch (err) {
         console.error("Error fetching bangles:", err);
       }
@@ -21,13 +27,13 @@ function Chunkybangle() {
 
   return (
     <>
-      <Header/>
+      <Header />
       <Details
         heading="Chunky Bangles"
         headingimage="https://media.istockphoto.com/id/1396888542/photo/traditional-indian-gold-bangles.webp?a=1&b=1&s=612x612&w=0&k=20&c=zMCgcyRis5Xn2ZEno7kt7Yj3Eju2ORzz4QuhNs0ucus="
-        images={bangleImages}
+        all={bangles}
       />
-      <Footer/>
+      <Footer />
     </>
   );
 }
