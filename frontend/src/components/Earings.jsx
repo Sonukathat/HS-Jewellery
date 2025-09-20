@@ -5,14 +5,24 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 function Earings() {
-  const [earringImages, setEarringImages] = useState([]);
+  const [earrings, setEarrings] = useState([]);
 
   useEffect(() => {
     const fetchEarrings = async () => {
       try {
         const res = await axios.get("http://localhost:5000/category/get");
 
-        setEarringImages(res.data.categories[4].images.urls);
+        
+        const earringCategory = res.data.categories[4];
+
+        
+        const earringItems = earringCategory.images.urls.map((url, index) => ({
+          image: url,
+          name: earringCategory.images.details[index]?.name || "No Name",
+          price: earringCategory.images.details[index]?.price || "N/A"
+        }));
+
+        setEarrings(earringItems);
       } catch (err) {
         console.error("Error fetching earrings:", err);
       }
@@ -23,13 +33,13 @@ function Earings() {
 
   return (
     <>
-      <Header/>
+      <Header />
       <Details
         heading="Earrings"
         headingimage="https://images.unsplash.com/photo-1608613381851-6a058de0dc11?w=600&auto=format&fit=crop&q=60"
-        images={earringImages}
+        all={earrings}
       />
-      <Footer/>
+      <Footer />
     </>
   );
 }
