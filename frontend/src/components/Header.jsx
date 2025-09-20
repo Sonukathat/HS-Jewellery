@@ -57,7 +57,7 @@ function Header() {
                         <Link
                             to={item.path}
                             key={index}
-                            className="cursor-pointer text-sm"
+                            className="cursor-pointer font-serif text-sm"
                         >
                             {item.name}
                         </Link>

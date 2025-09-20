@@ -37,7 +37,7 @@ function Trending() {
     return (
         <div className="flex flex-col gap-8">
             <div>
-                <h2 className="text-4xl my-4 ml-4">Trending Now</h2>
+                <h2 className="text-4xl font-serif   my-4 ml-4">Trending Now</h2>
             </div>
             <div className="grid grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {products.slice(0, 12).map((item, i) => (
@@ -50,7 +50,7 @@ function Trending() {
                             alt={item.name}
                             className="h-96 w-full transition-transform duration-500 ease-in-out transform hover:scale-101"
                         />
-                        <p className="mt-8 ml-5">{item.name}</p>
+                        <p className="mt-8 ml-5 font-serif">{item.name}</p>
                         <p className="my-3 ml-5">{item.price}</p>
                     </div>
                 ))}
