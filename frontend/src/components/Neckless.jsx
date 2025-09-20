@@ -5,31 +5,41 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 function Neckless() {
-  const [necklessImages, setNecklessImages] = useState([]);
+  const [necklaces, setNecklaces] = useState([]);
 
   useEffect(() => {
-    const fetchNeckless = async () => {
+    const fetchNecklaces = async () => {
       try {
         const res = await axios.get("http://localhost:5000/category/get");
-        // console.log(res.data.categories[4].images)
-        setNecklessImages(res.data.categories[0].images.urls);
+
+        
+        const necklaceCategory = res.data.categories[0];
+
+        
+        const necklaceItems = necklaceCategory.images.urls.map((url, index) => ({
+          image: url,
+          name: necklaceCategory.images.details[index]?.name || "No Name",
+          price: necklaceCategory.images.details[index]?.price || "N/A"
+        }));
+
+        setNecklaces(necklaceItems);
       } catch (err) {
-        console.error("Error fetching Neckless:", err);
+        console.error("Error fetching Necklaces:", err);
       }
     };
 
-    fetchNeckless();
+    fetchNecklaces();
   }, []);
 
   return (
     <>
-      <Header/>
+      <Header />
       <Details
         heading="Necklaces"
         headingimage="https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bmVja2xhY2V8ZW58MHwwfDB8fHww"
-        images={necklessImages}
+        all={necklaces}
       />
-      <Footer/>
+      <Footer />
     </>
   );
 }
