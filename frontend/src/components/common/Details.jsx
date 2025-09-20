@@ -4,7 +4,7 @@ function Details({ heading, headingimage, all }) {
   return (
     <div className="py-4">
       <div className="flex flex-col px-1 sm:flex-row sm:items-center justify-around">
-        <h2 className="text-4xl my-4 ml-4">{heading}</h2>
+        <h2 className="text-4xl my-4 ml-4 font-serif">{heading}</h2>
         <img
           className="h-40 w-screen sm:w-100 rounded-r"
           src={headingimage}
@@ -29,7 +29,7 @@ function Details({ heading, headingimage, all }) {
               alt={item.name}
               className="h-80 w-full transition-transform duration-500 ease-in-out transform hover:scale-101"
             />
-            <p className="mt-4 ml-5 font-medium">{item.name}</p>
+            <p className="mt-4 ml-5 font-serif">{item.name}</p>
             <p className="my-2 ml-5 text-gray-600">₹{item.price}</p>
           </div>
         ))}

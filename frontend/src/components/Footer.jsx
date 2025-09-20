@@ -25,11 +25,11 @@ function Footer() {
     <div className="bg-[#f8dcdb]">
       <div className="flex flex-col gap-8 py-6 border-b border-gray-400">
         <div>
-          <h2 className="text-2xl text-center">Quick links</h2>
+          <h2 className="text-2xl text-center font-serif">Quick links</h2>
         </div>
         <div className="flex flex-col gap-4 pl-4 text-sm text-gray-700 md:flex-row md:justify-center md:gap-8">
           {links.map((link, index) => (
-            <p className="cursor-pointer" key={index}>{link}</p>
+            <p className="cursor-pointer font-serif" key={index}>{link}</p>
           ))}
         </div>
         <div className="flex justify-center">
