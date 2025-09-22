@@ -43,7 +43,7 @@ function Trending() {
                 {products.slice(0, 12).map((item, i) => (
                     <div
                         key={i}
-                        className="border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out overflow-hidden"
+                        className="cursor-pointer border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out overflow-hidden"
                     >
                         <img
                             src={item.image}
@@ -56,7 +56,7 @@ function Trending() {
                 ))}
             </div>
             <div className="flex justify-center">
-                <button className="bg-gray-800 px-8 py-3 text-white rounded-md">
+                <button className="bg-gray-800 px-8 py-3 text-white rounded-md cursor-pointer">
                     View all
                 </button>
             </div>
