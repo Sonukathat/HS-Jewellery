@@ -45,7 +45,7 @@ function Feedback() {
                 </div>
             </div>
             <div className="flex justify-center">
-                <button className="bg-white text-[#7b614e] px-10 py-3 rounded-lg">Reviews on Instagram</button>
+                <button className="bg-white text-[#7b614e] px-10 py-3 rounded-lg cursor-pointer">Reviews on Instagram</button>
             </div>
         </div>
     )
