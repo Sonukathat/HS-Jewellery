@@ -3,6 +3,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import axios from "axios";
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Signup() {
     const [name, setName] = useState('');
@@ -12,17 +14,17 @@ function Signup() {
     const handleUser = async (event) => {
         event.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/users/signup', {
+            await axios.post('http://localhost:5000/users/signup', {
                 name,
                 email,
                 password
             });
-            alert("Signup successful");
+            toast.success("Signup successful!");
             setName("");
             setEmail("");
             setPassword("");
-            console.log("hello");
         } catch (error) {
+            toast.error("Signup failed. Please try again.");
             console.log("error", error);
         }
     };
@@ -90,6 +92,7 @@ function Signup() {
                 </form>
             </div>
             <Footer />
+            <ToastContainer position="top-right"/>
         </>
     );
 }
