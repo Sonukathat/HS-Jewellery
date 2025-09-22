@@ -6,7 +6,7 @@ function Details({ heading, headingimage, all }) {
       <div className="flex flex-col px-1 sm:flex-row sm:items-center justify-around">
         <h2 className="text-4xl my-4 ml-4 font-serif">{heading}</h2>
         <img
-          className="h-40 w-screen sm:w-100 rounded-r"
+          className="h-40 w-screen sm:w-100 rounded-r cursor-pointer"
           src={headingimage}
           alt=""
         />
@@ -22,7 +22,7 @@ function Details({ heading, headingimage, all }) {
         {all.map((item, index) => (
           <div
             key={index}
-            className="border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out overflow-hidden"
+            className="cursor-pointer border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out overflow-hidden"
           >
             <img
               src={item.image}
