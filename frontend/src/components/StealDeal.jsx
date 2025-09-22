@@ -37,7 +37,7 @@ function StealDeal() {
         {stealImg.map((item, i) => (
           <div
             key={i}
-            className="border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out"
+            className=" cursor-pointer border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out"
           >
             <img
               src={item.image}
@@ -50,7 +50,7 @@ function StealDeal() {
             <p className="mt-2 ml-5 font-serif">{item.name}</p>
             <div className="flex">
               <p className="my-3 ml-5 text-gray-400 line-through">
-                Rs {item.oldPrice || "1,099.00"}
+                Rs 1,099.00
               </p>
               <p className="my-3 ml-5">Rs {item.price}</p>
             </div>
@@ -59,7 +59,7 @@ function StealDeal() {
       </div>
 
       <div className="flex justify-center py-8">
-        <button className="bg-green-950 text-white px-8 py-3 rounded-md">
+        <button className="bg-green-950 text-white px-8 py-3 rounded-md cursor-pointer">
           View all
         </button>
       </div>
