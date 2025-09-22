@@ -17,7 +17,7 @@ function FAQ() {
             </div>
             <div className="flex flex-col items-center">
                 {parag.map((para,index)=>(
-                    <p className="py-4 border-b font-serif" key={index}>{para}</p>
+                    <p className="py-4 border-b font-serif cursor-pointer" key={index}>{para}</p>
                 ))}
             </div>
             <div className="flex flex-col items-center gap-2 px-2 text-center">
