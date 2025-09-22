@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Category() {
   const [catImg, setcatImg] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategory = async () => {
@@ -25,6 +28,10 @@ function Category() {
     fetchCategory();
   }, []);
 
+  const handleCategory = (catName)=>{
+      navigate(`/${catName.toLowerCase()}`);
+  }
+
   return (
     <div>
       <div>
@@ -33,7 +40,8 @@ function Category() {
       <div className='grid grid-cols-1 px-4 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 lg:px-44'>
         {catImg.map((cat, index) => (
           <div 
-            key={index} 
+            key={index}
+            onClick={()=>handleCategory(cat.name)}
             className='cursor-pointer border border-gray-200 rounded-b-sm xl:pb-10 hover:scale-[1.01] hover:border-gray-500 transition-all duration-300 ease-in-out'
           >
             <img
