@@ -18,6 +18,10 @@ function Signin() {
         email,
         password,
       });
+
+      const token = res.data.token;
+      localStorage.setItem("token",token);
+      
       toast.success("Signin successful!");
       setEmail('');
       setPassword('');
