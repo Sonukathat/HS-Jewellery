@@ -34,7 +34,7 @@ function Category() {
         {catImg.map((cat, index) => (
           <div 
             key={index} 
-            className='border border-gray-200 rounded-b-sm xl:pb-10 hover:scale-[1.01] hover:border-gray-500 transition-all duration-300 ease-in-out'
+            className='cursor-pointer border border-gray-200 rounded-b-sm xl:pb-10 hover:scale-[1.01] hover:border-gray-500 transition-all duration-300 ease-in-out'
           >
             <img
               src={cat.image}
@@ -46,7 +46,7 @@ function Category() {
         ))}
       </div>
       <div className='flex justify-center py-8'>
-        <button className='bg-gray-800 px-8 py-3 text-white rounded-md'>
+        <button className='bg-gray-800 px-8 py-3 text-white rounded-md cursor-pointer'>
           View all
         </button>
       </div>
