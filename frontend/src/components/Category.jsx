@@ -12,10 +12,10 @@ function Category() {
         const categories = res.data.categories;
 
 
-        const selectedImages = categories.map(cat => ({
-          name: cat.name,
-          image: cat.images.urls[0] 
-        }));
+          const selectedImages = categories.map(cat => ({
+            name: cat.name,
+            image: cat.images.urls[0] 
+          }));
 
         setcatImg(selectedImages);
       } catch (error) {

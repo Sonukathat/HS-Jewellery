@@ -16,6 +16,7 @@ import Jumka from "./components/Jumka";
 import Shopall from "./components/Shopall";
 import Admin from "./components/admin/Admin";
 import Addcategory from "./components/admin/Addcategory";
+import Getcategory from "./components/admin/Getcategory";
 
 function App() {
   return (
@@ -41,7 +42,8 @@ function App() {
         <Route path="/shop-all" element={<Shopall/>}/> */}
         <Route path="/addcategory" element={<Addcategory/>}/>
       </Routes>
-      <Admin/>
+      {/* <Admin/> */}
+      <Getcategory/>
     </>
   )
 }
