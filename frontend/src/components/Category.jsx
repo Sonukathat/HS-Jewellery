@@ -29,7 +29,7 @@ function Category() {
   }, []);
 
   const handleCategory = (catName)=>{
-      navigate(`/${catName.toLowerCase()}`);
+      navigate(`/${catName.toLowerCase().replace(/\s+/g, "-")}`);
   }
 
   return (
