@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 function Category() {
   const [catImg, setcatImg] = useState([]);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     const fetchCategory = async () => {
       try {
@@ -28,10 +26,6 @@ function Category() {
     fetchCategory();
   }, []);
 
-  const handleCategory = (catName)=>{
-      navigate(`/${catName.toLowerCase().replace(/\s+/g, "-")}`);
-  }
-
   return (
     <div>
       <div>
@@ -41,7 +35,6 @@ function Category() {
         {catImg.map((cat, index) => (
           <div 
             key={index}
-            onClick={()=>handleCategory(cat.name)}
             className='cursor-pointer border border-gray-200 rounded-b-sm xl:pb-10 hover:scale-[1.01] hover:border-gray-500 transition-all duration-300 ease-in-out'
           >
             <img
