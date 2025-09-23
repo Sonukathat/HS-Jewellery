@@ -14,7 +14,7 @@ import Alljewelery from "./components/common/Details";
 import Neckless from "./components/Neckless";
 import Jumka from "./components/Jumka";
 import Shopall from "./components/Shopall";
-import Admin from "./components/admin/Addcategory";
+import Admin from "./components/admin/Admin";
 
 function App() {
   return (
