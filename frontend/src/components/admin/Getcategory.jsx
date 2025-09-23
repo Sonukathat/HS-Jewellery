@@ -17,7 +17,7 @@ function Getcategory() {
                 const selectedCategory = category.map(cat => ({
                     name: cat.name,
                     image: cat.images.urls[0],
-                    detail: cat.images.details[0].name
+                    detail: cat.images.details[0]
                 }));
 
                 setCategory(selectedCategory);
