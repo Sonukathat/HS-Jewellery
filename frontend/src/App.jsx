@@ -15,12 +15,13 @@ import Neckless from "./components/Neckless";
 import Jumka from "./components/Jumka";
 import Shopall from "./components/Shopall";
 import Admin from "./components/admin/Admin";
+import Addcategory from "./components/admin/Addcategory";
 
 function App() {
   return (
     <>
-      {/* <Routes>
-        <Route path="/" element={
+      <Routes>
+        {/* <Route path="/" element={
           <>
             <Header />
             <Main />
@@ -37,8 +38,9 @@ function App() {
         <Route path="/chunky-bangles" element={<Chunkybangle/>}/>
         <Route path="/all-jewelery" element={<Alljewelery/>}/>
         <Route path="/necklaces" element={<Neckless/>}/>
-        <Route path="/shop-all" element={<Shopall/>}/>
-      </Routes> */}
+        <Route path="/shop-all" element={<Shopall/>}/> */}
+        <Route path="/addcategory" element={<Addcategory/>}/>
+      </Routes>
       <Admin/>
     </>
   )

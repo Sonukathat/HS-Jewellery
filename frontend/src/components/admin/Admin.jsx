@@ -11,19 +11,19 @@ function Admin() {
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-6xl">
-        <button onClick={()=>navigate('/addcategory')} className="bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
+        <button onClick={()=>navigate('/addcategory')} className="cursor-pointer bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
           ADD CATEGORY
         </button>
 
-        <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
+        <button className="cursor-pointer bg-red-500 hover:bg-red-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
           DELETE CATEGORY
         </button>
 
-        <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
+        <button className="cursor-pointer bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
           UPDATE CATEGORY
         </button>
 
-        <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
+        <button className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
           SEE CATEGORY
         </button>
       </div>
