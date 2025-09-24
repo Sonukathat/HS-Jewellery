@@ -23,7 +23,7 @@ function Admin() {
           UPDATE CATEGORY
         </button>
 
-        <button className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
+        <button onClick={()=>navigate('/getcategory')} className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
           SEE CATEGORY
         </button>
       </div>

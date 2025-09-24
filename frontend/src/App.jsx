@@ -17,6 +17,7 @@ import Shopall from "./components/Shopall";
 import Admin from "./components/admin/Admin";
 import Addcategory from "./components/admin/Addcategory";
 import Getcategory from "./components/admin/Getcategory";
+import Updatecategory from "./components/admin/Updatecategory";
 
 function App() {
   return (
@@ -40,10 +41,13 @@ function App() {
         <Route path="/all-jewelery" element={<Alljewelery/>}/>
         <Route path="/necklaces" element={<Neckless/>}/>
         <Route path="/shop-all" element={<Shopall/>}/> */}
+        <Route path="/" element={<Admin/>}/>
         <Route path="/addcategory" element={<Addcategory/>}/>
+        <Route path="/getcategory" element={<Getcategory/>}/>
+        <Route path="/updatecategory" element={<Updatecategory/>}/>
       </Routes>
-      {/* <Admin/> */}
-      <Getcategory/>
+      {/* <Getcategory/> */}
+      {/* <Updatecategory/> */}
     </>
   )
 }
