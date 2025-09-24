@@ -15,7 +15,7 @@ function Admin() {
           ADD CATEGORY
         </button>
 
-        <button className="cursor-pointer bg-red-500 hover:bg-red-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
+        <button onClick={()=>navigate('/deletecategory')} className="cursor-pointer bg-red-500 hover:bg-red-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
           DELETE CATEGORY
         </button>
 
