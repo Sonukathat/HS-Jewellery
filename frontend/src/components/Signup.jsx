@@ -32,10 +32,10 @@ function Signup() {
     return (
         <>
             <Header />
-            <div className="flex justify-center items-center h-screen bg-gray-100">
+            <div className="flex justify-center py-8 bg-gray-100">
                 <form
                     onSubmit={handleUser}
-                    className="rounded-lg bg-white p-10 flex flex-col gap-8 w-72 sm:w-[25rem]"
+                    className="rounded-lg bg-white p-10 flex flex-col gap-6 w-72 sm:w-[25rem]"
                 >
                     <div className="flex justify-center">
                         <h2 className="text-xl">MACHKI</h2>
