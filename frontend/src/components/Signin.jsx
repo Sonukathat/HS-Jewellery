@@ -18,9 +18,10 @@ function Signin() {
         email,
         password,
       });
-
+      console.log(res)
       const token = res.data.token;
       localStorage.setItem("token",token);
+      localStorage.setItem("user",JSON.stringify(res.data.user))
       
       toast.success("Signin successful!");
       setEmail('');
