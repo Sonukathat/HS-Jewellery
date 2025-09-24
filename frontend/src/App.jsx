@@ -24,7 +24,7 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route path="/" element={
+        <Route path="/" element={
           <>
             <Header />
             <Main />
@@ -41,16 +41,13 @@ function App() {
         <Route path="/chunky-bangles" element={<Chunkybangle/>}/>
         <Route path="/all-jewelery" element={<Alljewelery/>}/>
         <Route path="/necklaces" element={<Neckless/>}/>
-        <Route path="/shop-all" element={<Shopall/>}/> */}
-        <Route path="/" element={<Admin/>}/>
+        <Route path="/shop-all" element={<Shopall/>}/>
+        <Route path="/admin" element={<Admin/>}/>
         <Route path="/addcategory" element={<Addcategory/>}/>
         <Route path="/getcategory" element={<Getcategory/>}/>
         <Route path="/updatecategory" element={<Updatecategory/>}/>
         <Route path="/deletecategory" element={<DeleteCategory/>}/>
       </Routes>
-      {/* <Getcategory/> */}
-      {/* <Updatecategory/> */}
-      {/* <DeleteCategory/> */}
     </>
   )
 }
