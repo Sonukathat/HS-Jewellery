@@ -11,7 +11,7 @@ function Getcategory() {
 
                 const categories = res.data.categories;
 
-                console.log(categories)
+                // console.log(categories)
 
                 const selectedCategory = categories.map((cat) => ({
                     name: cat.name,
@@ -24,7 +24,7 @@ function Getcategory() {
                 }));
 
                 setCategory(selectedCategory);
-                console.log(selectedCategory);
+                // console.log(selectedCategory);
             } catch (error) {
                 console.log("error", error);
             }
