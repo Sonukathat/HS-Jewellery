@@ -104,7 +104,7 @@ function Updatecategory() {
                 </div>
                 <div className="flex flex-col">
                     <label htmlFor="image" className="mb-2 font-semibold text-gray-700">
-                        Upload New Image
+                        Upload New Images
                     </label>
                     <input
                         type="file"

@@ -19,7 +19,7 @@ function Admin() {
           DELETE CATEGORY
         </button>
 
-        <button onCanPlay={()=>navigate('/updatecategory')} className="cursor-pointer bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
+        <button onClick={()=>navigate('/updatecategory')} className="cursor-pointer bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition duration-300 w-full">
           UPDATE CATEGORY
         </button>
 
