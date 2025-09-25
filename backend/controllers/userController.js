@@ -61,7 +61,7 @@ export const loginUser = async (req, res) => {
         res.status(200).json({
             success: true,
             token : token,
-            user:user
+            user:user.isAdmin
         })
     } catch (error) {
         res.status(500).json({ message: error.message })
