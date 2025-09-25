@@ -20,9 +20,15 @@ function Signin() {
       });
       console.log(res)
       const token = res.data.token;
-      localStorage.setItem("token",token);
-      localStorage.setItem("user",JSON.stringify(res.data.user))
-      
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(res.data.user))
+
+      if (data.user.isAdmin) {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
+
       toast.success("Signin successful!");
       setEmail('');
       setPassword('');
