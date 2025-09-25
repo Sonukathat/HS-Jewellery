@@ -8,7 +8,7 @@ const Adminroute = ({ children }) => {
   }
 
   if (!user.isAdmin) {
-    return <Navigate to="/unauthorized" />;
+    return <Navigate to="/page-not-found" />;
   }
 
   return children;

@@ -20,6 +20,7 @@ import Getcategory from "./components/admin/Getcategory";
 import Updatecategory from "./components/admin/Updatecategory";
 import DeleteCategory from "./components/admin/Deletecategory";
 import AdminRoute from "./components/admin/AdminRoute";
+import Notfound from "./components/Notfound";
 
 function App() {
   return (
@@ -43,14 +44,30 @@ function App() {
         <Route path="/all-jewelery" element={<Alljewelery />} />
         <Route path="/necklaces" element={<Neckless />} />
         <Route path="/shop-all" element={<Shopall />} />
-        {/* <Route path="/admin" element={<Admin/>}/>
-        <Route path="/addcategory" element={<Addcategory/>}/>
-        <Route path="/getcategory" element={<Getcategory/>}/>
-        <Route path="/updatecategory" element={<Updatecategory/>}/>
-        <Route path="/deletecategory" element={<DeleteCategory/>}/> */}
+        <Route path="/page-not-found" element={<Notfound />} />
         <Route path="/admin" element={
           <AdminRoute>
             <Admin />
+          </AdminRoute>
+        } />
+        <Route path="/addcategory" element={
+          <AdminRoute>
+            <Addcategory />
+          </AdminRoute>
+        } />
+        <Route path="/getcategory" element={
+          <AdminRoute>
+            <Getcategory />
+          </AdminRoute>
+        } />
+        <Route path="/updatecategory" element={
+          <AdminRoute>
+            <Updatecategory />
+          </AdminRoute>
+        } />
+        <Route path="/deletecategory" element={
+          <AdminRoute>
+            <DeleteCategory />
           </AdminRoute>
         } />
       </Routes>
