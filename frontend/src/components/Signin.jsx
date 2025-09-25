@@ -34,7 +34,7 @@ function Signin() {
       setPassword('');
 
     } catch (error) {
-      toast.error("Signin failed. Please try again.");
+      toast.error(error.response?.data?.message || "Signin failed");
       console.error("Signin error:", error);
     }
   };
