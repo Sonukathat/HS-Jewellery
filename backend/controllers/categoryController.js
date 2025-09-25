@@ -102,21 +102,28 @@ export const updateCategory = async (req, res) => {
 };
 
 
-
 export const deleteCategory = async (req, res) => {
-     const { name } = req.params;
+  try {
+    const { name } = req.params;
 
     const deleted = await Category.findOneAndDelete({ name });
 
     if (!deleted) {
-        return res.status(200).json({
-            success: true,
-            message: "Category not found"
-        });
+      return res.status(404).json({
+        success: false,
+        message: "Category not found",
+      });
     }
 
     res.status(200).json({
-        success: true,
-        message: "Category deleted"
+      success: true,
+      message: "Category deleted successfully",
     });
-}
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Server error while deleting category",
+    });
+  }
+};
