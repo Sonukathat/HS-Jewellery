@@ -23,11 +23,11 @@ function Signin() {
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(res.data.user))
 
-      if (data.user.isAdmin) {
-        navigate("/admin");
-      } else {
-        navigate("/");
-      }
+      // if (data.user.isAdmin) {
+      //   navigate("/admin");
+      // } else {
+      //   navigate("/");
+      // }
 
       toast.success("Signin successful!");
       setEmail('');
