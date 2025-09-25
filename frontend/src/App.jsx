@@ -1,4 +1,4 @@
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Bracelets from "./components/Bracelets"
 import Chunkybangle from "./components/Chunkybangle"
 import Earings from "./components/Earings"
@@ -19,6 +19,7 @@ import Addcategory from "./components/admin/Addcategory";
 import Getcategory from "./components/admin/Getcategory";
 import Updatecategory from "./components/admin/Updatecategory";
 import DeleteCategory from "./components/admin/Deletecategory";
+import AdminRoute from "./components/admin/AdminRoute";
 
 function App() {
   return (
@@ -30,23 +31,28 @@ function App() {
             <Main />
             <Footer />
           </>
-        }/>
-        <Route path="/signin" element={<Signin/>}/>
-        <Route path="/signup" element={<Signup/>}/>
-        <Route path="/cart" element={<Emptycart/>}/>
-        <Route path="/earrings" element={<Earings/>}/>
-        <Route path="/bracelets" element={<Bracelets/>}/>
-        <Route path="/rings" element={<Rings/>}/>
-        <Route path="/jumka" element={<Jumka/>}/>
-        <Route path="/chunky-bangles" element={<Chunkybangle/>}/>
-        <Route path="/all-jewelery" element={<Alljewelery/>}/>
-        <Route path="/necklaces" element={<Neckless/>}/>
-        <Route path="/shop-all" element={<Shopall/>}/>
-        <Route path="/admin" element={<Admin/>}/>
+        } />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/cart" element={<Emptycart />} />
+        <Route path="/earrings" element={<Earings />} />
+        <Route path="/bracelets" element={<Bracelets />} />
+        <Route path="/rings" element={<Rings />} />
+        <Route path="/jumka" element={<Jumka />} />
+        <Route path="/chunky-bangles" element={<Chunkybangle />} />
+        <Route path="/all-jewelery" element={<Alljewelery />} />
+        <Route path="/necklaces" element={<Neckless />} />
+        <Route path="/shop-all" element={<Shopall />} />
+        {/* <Route path="/admin" element={<Admin/>}/>
         <Route path="/addcategory" element={<Addcategory/>}/>
         <Route path="/getcategory" element={<Getcategory/>}/>
         <Route path="/updatecategory" element={<Updatecategory/>}/>
-        <Route path="/deletecategory" element={<DeleteCategory/>}/>
+        <Route path="/deletecategory" element={<DeleteCategory/>}/> */}
+        <Route path="/admin" element={
+          <AdminRoute>
+            <Admin />
+          </AdminRoute>
+        } />
       </Routes>
     </>
   )
