@@ -5,14 +5,14 @@ import Category from "../models/categoryModel.js";
 export const createCategory = async (req, res) => {
   try {
     const { name, description } = req.body;
-    const itemNames = req.body.itemNames; // array
-    const itemPrices = req.body.itemPrices; // array
+    const itemNames = req.body.itemNames;
+    const itemPrices = req.body.itemPrices; 
 
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ message: "Images are required" });
     }
 
-    const imageUrls = req.files.map((file) => file.filename); // ya file.path
+    const imageUrls = req.files.map((file) => file.filename); //  file.path
 
     const details = itemNames.map((n, idx) => ({
       name: n,
