@@ -3,41 +3,37 @@ import Category from "../models/categoryModel.js";
 
 
 export const createCategory = async (req, res) => {
-    try {
-        const { name, description, details } = req.body;
+  try {
+    const { name, description } = req.body;
+    const itemNames = req.body.itemNames; // array
+    const itemPrices = req.body.itemPrices; // array
 
-        if (!name || !description || !req.files || req.files.length === 0) {
-            return res.status(400).json({ success: false, message: "All fields required" });
-        }
-
-    
-        const imagePaths = req.files.map(file =>
-            `${req.protocol}://${req.get("host")}/uploads/${file.filename}`
-        );
-
-        
-        let parsedDetails = [];
-        if (details) {
-            parsedDetails = JSON.parse(details);
-        }
-
-        const category = await Category.create({
-            name,
-            description,
-            images: {
-                urls: imagePaths,
-                details: parsedDetails,
-            }
-        });
-
-        res.status(201).json({
-            success: true,
-            category
-        });
-
-    } catch (error) {
-        res.status(500).json({ success: false, message: error.message });
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ message: "Images are required" });
     }
+
+    const imageUrls = req.files.map((file) => file.filename); // ya file.path
+
+    const details = itemNames.map((n, idx) => ({
+      name: n,
+      price: Number(itemPrices[idx])
+    }));
+
+    const category = new Category({
+      name,
+      description,
+      images: {
+        urls: imageUrls,
+        details
+      },
+    });
+
+    await category.save();
+    res.status(201).json({ success: true, category });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
 };
 
 
