@@ -105,10 +105,10 @@ export const updateCategory = async (req, res) => {
 
 export const deleteCategory = async (req, res) => {
   try {
-    const { name } = req.params; // 👉 params se name milega
+    const { name } = req.params;
 
     const deleted = await Category.findOneAndDelete({
-      name: { $regex: new RegExp(`^${name}$`, "i") } // case-insensitive match
+      name: { $regex: new RegExp(`^${name}$`, "i") } 
     });
 
     if (!deleted) {
