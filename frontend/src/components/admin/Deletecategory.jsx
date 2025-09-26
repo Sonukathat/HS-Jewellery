@@ -14,15 +14,18 @@ function DeletecategoryByName() {
 
         try {
             const token = localStorage.getItem("token");
+            // console.log(token)
             const res = await axios.delete(
-                `http://localhost:5000/category/deleteByName/${name}`,
+                `http://localhost:5000/category/delete/${name}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 }
             );
+            console.log(res)
             alert(res.data.message);
+            
             setName("");
         } catch (error) {
             console.error(error);
