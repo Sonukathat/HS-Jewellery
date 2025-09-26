@@ -1,52 +1,63 @@
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 
-function UpdateCategoryByName() {
-  const [formData, setFormData] = useState({
-    oldName: "",       // Target category
-    newName: "",       // New name
-    description: "",
-    nameprice: "",
-    image: null,
-  });
+function UpdateCategory() {
+  const [oldName, setOldName] = useState(""); // target category
+  const [newName, setNewName] = useState(""); // new category name
+  const [description, setDescription] = useState(""); // category description
+  const [images, setImages] = useState([]); // uploaded images
+  const [items, setItems] = useState([]); // har image ke liye name & price
 
-  // Handle input change
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
+  // Handle image selection
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    setImages(files);
+    setItems(files.map(() => ({ name: "", price: "" }))); // dynamic inputs for each image
   };
 
-  // Handle file change
-  const handleFileChange = (e) => {
-    setFormData({ ...formData, image: e.target.files[0] });
+  // Handle name/price change for each image
+  const handleItemChange = (index, field, value) => {
+    const newItems = [...items];
+    newItems[index][field] = value;
+    setItems(newItems);
   };
 
-  // Submit update
+  // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.oldName) return alert("Please enter the category to update");
-
-    const data = new FormData();
-    data.append("oldName", formData.oldName);
-    data.append("name", formData.newName);
-    data.append("description", formData.description);
-    data.append("nameprice", formData.nameprice);
-    if (formData.image) data.append("image", formData.image);
+    if (!oldName) return alert("Please enter the current category name");
+    if (!newName) return alert("Please enter the new category name");
+    if (images.length !== items.length) {
+      return alert("Please fill all names and prices for selected images");
+    }
 
     try {
-      await axios.put("http://localhost:5000/category/updateByName", data, {
-        headers: { "Content-Type": "multipart/form-data" },
+      const token = localStorage.getItem("token");
+      const formData = new FormData();
+      formData.append("oldName", oldName);
+      formData.append("newName", newName);
+      formData.append("description", description);
+
+      images.forEach((img) => formData.append("images", img));
+      items.forEach((item, idx) => {
+        formData.append(`itemNames[${idx}]`, item.name);
+        formData.append(`itemPrices[${idx}]`, item.price);
+      });
+
+      await axios.put("http://localhost:5000/category/update", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
       });
 
       alert("Category updated successfully!");
-      setFormData({
-        oldName: "",
-        newName: "",
-        description: "",
-        nameprice: "",
-        image: null,
-      });
+      setOldName("");
+      setNewName("");
+      setDescription("");
+      setImages([]);
+      setItems([]);
     } catch (error) {
       console.error(error);
       alert(error.response?.data?.message || "Update failed!");
@@ -63,75 +74,80 @@ function UpdateCategoryByName() {
           Update Category
         </h2>
 
+        {/* Old Category Name */}
         <div className="flex flex-col">
-          <label htmlFor="oldName" className="mb-2 font-semibold text-gray-700">
-            Current Category Name
-          </label>
+          <label className="mb-2 font-semibold text-gray-700">Current Category Name</label>
           <input
             type="text"
-            id="oldName"
-            value={formData.oldName}
-            onChange={handleChange}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            placeholder="Enter category to update"
+            value={oldName}
+            onChange={(e) => setOldName(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none"
+            placeholder="Enter current category name"
             required
           />
         </div>
 
+        {/* New Category Name */}
         <div className="flex flex-col">
-          <label htmlFor="newName" className="mb-2 font-semibold text-gray-700">
-            New Category Name
-          </label>
+          <label className="mb-2 font-semibold text-gray-700">New Category Name</label>
           <input
             type="text"
-            id="newName"
-            value={formData.newName}
-            onChange={handleChange}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none"
             placeholder="Enter new category name"
+            required
           />
         </div>
 
+        {/* Description */}
         <div className="flex flex-col">
-          <label htmlFor="description" className="mb-2 font-semibold text-gray-700">
-            Description
-          </label>
+          <label className="mb-2 font-semibold text-gray-700">Category Description</label>
           <input
             type="text"
-            id="description"
-            value={formData.description}
-            onChange={handleChange}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-            placeholder="Enter description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none"
+            placeholder="Enter category description"
           />
         </div>
 
+        {/* Upload Images */}
         <div className="flex flex-col">
-          <label htmlFor="nameprice" className="mb-2 font-semibold text-gray-700">
-            Name & Price
-          </label>
-          <input
-            type="text"
-            id="nameprice"
-            value={formData.nameprice}
-            onChange={handleChange}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-            placeholder="Eg. Ring - ₹1200"
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label htmlFor="image" className="mb-2 font-semibold text-gray-700">
-            Upload New Image
-          </label>
+          <label className="mb-2 font-semibold text-gray-700">Upload New Images</label>
           <input
             type="file"
-            id="image"
-            onChange={handleFileChange}
+            multiple
+            onChange={handleImageChange}
             className="px-3 py-2 border border-gray-300 rounded-lg cursor-pointer file:bg-[#f8dcdb] file:text-black file:rounded-md file:px-4 file:py-2"
           />
+          <p className="text-sm text-gray-500">{images.length} file(s) selected</p>
         </div>
 
+        {/* Dynamic Name & Price Inputs */}
+        {items.length > 0 &&
+          items.map((item, idx) => (
+            <div key={idx} className="flex gap-2">
+              <input
+                type="text"
+                value={item.name}
+                onChange={(e) => handleItemChange(idx, "name", e.target.value)}
+                placeholder={`Name ${idx + 1}`}
+                required
+                className="w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none"
+              />
+              <input
+                type="text"
+                value={item.price}
+                onChange={(e) => handleItemChange(idx, "price", e.target.value)}
+                placeholder={`Price ${idx + 1}`}
+                required
+                className="w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none"
+              />
+            </div>
+          ))}
+
+        {/* Submit Button */}
         <div className="flex justify-center">
           <button
             type="submit"
@@ -145,4 +161,4 @@ function UpdateCategoryByName() {
   );
 }
 
-export default UpdateCategoryByName;
+export default UpdateCategory;
