@@ -104,7 +104,7 @@ export const updateCategory = async (req, res) => {
 
 export const deleteCategory = async (req, res) => {
   try {
-    const { name } = req.params;
+    const { name } = req.body;
 
     const deleted = await Category.findOneAndDelete({
       name: { $regex: new RegExp(`^${name}$`, 'i') } // case-insensitive match
