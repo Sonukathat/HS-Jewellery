@@ -61,44 +61,37 @@ export const getCategory = async (req, res) => {
 
 
 export const updateCategory = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { name, description } = req.body;
+  try {
+    const { oldName, name, description, nameprice } = req.body;
 
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            return res.status(400).json({
-                success: false,
-                message: "Invalid id format"
-            });
-        }
+    const updateData = {
+      name,
+      description,
+      nameprice,
+    };
 
-        let updateData = {};
-        if (name) updateData.name = name;
-        if (description) updateData.description = description;
-
-
-        if (req.file) {
-            const imagePath = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
-            updateData.image = imagePath;
-        }
-
-        const updated = await Category.findByIdAndUpdate(id, updateData, { new: true });
-
-        if (!updated) {
-            return res.status(404).json({
-                success: false,
-                message: "Category not found"
-            });
-        }
-
-        res.status(200).json({
-            success: true,
-            updated
-        });
-
-    } catch (error) {
-        res.status(500).json({ success: false, message: error.message });
+    if (req.file) {
+      updateData.image = req.file.filename;
     }
+
+    const updatedCategory = await Category.findOneAndUpdate(
+      { name: { $regex: new RegExp(`^${oldName}$`, "i") } }, // oldName se target
+      { $set: updateData },
+      { new: true }
+    );
+
+    if (!updatedCategory) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+
+    res.status(200).json({
+      message: "Category updated successfully",
+      updatedCategory,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error while updating category" });
+  }
 };
 
 
