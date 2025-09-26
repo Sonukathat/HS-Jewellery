@@ -15,7 +15,7 @@ function DeletecategoryByName() {
         try {
             const token = localStorage.getItem("token");
             const res = await axios.delete(
-                `http://localhost:5000/category/delete:${name}`,
+                `http://localhost:5000/category/deleteByName/${name}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
