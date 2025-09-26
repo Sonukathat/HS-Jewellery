@@ -62,20 +62,24 @@ export const getCategory = async (req, res) => {
 
 export const updateCategory = async (req, res) => {
   try {
-    const { oldName, name, description, nameprice } = req.body;
+    const { oldName, newName, description } = req.body;
+    const itemNames = req.body.itemNames; // array of names
+    const itemPrices = req.body.itemPrices; // array of prices
+
+    if (!oldName) return res.status(400).json({ message: "Old name required" });
 
     const updateData = {
-      name,
+      name: newName,
       description,
-      nameprice,
+      items: itemNames.map((n, idx) => ({ name: n, price: itemPrices[idx] }))
     };
 
-    if (req.file) {
-      updateData.image = req.file.filename;
+    if (req.files && req.files.length > 0) {
+      updateData.images = req.files.map(f => f.filename);
     }
 
     const updatedCategory = await Category.findOneAndUpdate(
-      { name: { $regex: new RegExp(`^${oldName}$`, "i") } }, // oldName se target
+      { name: { $regex: new RegExp(`^${oldName}$`, "i") } },
       { $set: updateData },
       { new: true }
     );
@@ -84,15 +88,13 @@ export const updateCategory = async (req, res) => {
       return res.status(404).json({ message: "Category not found" });
     }
 
-    res.status(200).json({
-      message: "Category updated successfully",
-      updatedCategory,
-    });
+    res.status(200).json({ message: "Category updated successfully", updatedCategory });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error while updating category" });
   }
 };
+
 
 
 
