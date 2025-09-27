@@ -2,55 +2,50 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const AllUser = () => {
-  const [users, setUsers] = useState([]);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const token = localStorage.getItem("token");
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const token = localStorage.getItem("token");
 
-        const res = await axios.get("http://localhost:5000/users/all", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+                const res = await axios.get("http://localhost:5000/users/alluser", {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                console.log(res)
+                setUsers(res.data.users);
+                setLoading(false);
+            } catch (err) {
+                setError(err.response?.data?.message || "Failed to fetch users");
+                setLoading(false);
+            }
+        };
 
-        setUsers(res.data.data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.response?.data?.message || "Failed to fetch users");
-        setLoading(false);
-      }
-    };
+        fetchUsers();
+    }, []);
 
-    fetchUsers();
-  }, []);
+    if (loading) return <p>Loading users...</p>;
 
-  if (loading) return <p>Loading users...</p>;
-  if (error) return <p className="text-red-500">{error}</p>;
 
-  return (
-    <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-2xl">
-      <h1 className="text-2xl font-bold mb-6">All Users</h1>
+    return (
+        <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-2xl">
+            <h1 className="text-2xl font-bold mb-6">All Users</h1>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {users.map((user) => (
-          <div
-            key={user._id}
-            className="flex flex-col items-center bg-gradient-to-r from-pink-100 via-white to-pink-100 p-5 rounded-xl shadow-md"
-          >
-            <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-3xl font-bold mb-3 shadow-inner">
-              {user.name.charAt(0)}
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {users.map((user) => (
+                    <div
+                        key={user._id}
+                        className="flex flex-col items-center bg-gradient-to-r from-pink-100 via-white to-pink-100 p-5 rounded-xl shadow-md">
+                        <h2 className="text-lg font-bold">{user.name}</h2>
+                        <p className="text-gray-600 text-sm">{user.email}</p>
+                    </div>
+                ))}
             </div>
-            <h2 className="text-lg font-bold">{user.name}</h2>
-            <p className="text-gray-600 text-sm">{user.email}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+        </div>
+    );
 };
 
 export default AllUser;
