@@ -8,6 +8,10 @@ import { Link } from "react-router-dom";
 import machki from "../assets/8D6D93BB-F102-40BF-9634-90888310B860.webp";
 
 function Header() {
+
+    const token = localStorage.getItem("token");
+    const isLoggedIn = !!token;
+
     const texts = ["Cash On Delivery Upto 2000/-", "Flat 10% off on Prepaid orders above 2000/-", "Free shipping on orders above 1500/-"];
     const [index, setIndex] = useState(0);
 
@@ -65,7 +69,15 @@ function Header() {
                 </div>
                 <div className="flex gap-4 xl:gap-8">
                     <CiSearch className="text-2xl cursor-pointer" onClick={() => setSearch(!search)} />
-                    <Link to="/signin"><CgProfile className="text-2xl" /></Link>
+                    {isLoggedIn ? (
+                        <Link to="/profile" title="Go to Profole">
+                            <CgProfile className="text-2xl cursor-pointer" />
+                        </Link>
+                    ) : (
+                        <Link to="/signin" title="Login to Continue">
+                            <CgProfile className="text-2xl cursor-pointer" />
+                        </Link>
+                    )}
                     <Link to="/cart"><CiShoppingCart className="text-2xl" /></Link>
                 </div>
             </div>
