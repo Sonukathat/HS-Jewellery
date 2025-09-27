@@ -15,7 +15,7 @@ const AllUser = () => {
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                console.log(res)
+                // console.log(res.data.users)
                 setUsers(res.data.users);
                 setLoading(false);
             } catch (err) {
@@ -36,11 +36,15 @@ const AllUser = () => {
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {users.map((user) => (
+
                     <div
                         key={user._id}
-                        className="flex flex-col items-center bg-gradient-to-r from-pink-100 via-white to-pink-100 p-5 rounded-xl shadow-md">
-                        <h2 className="text-lg font-bold">{user.name}</h2>
-                        <p className="text-gray-600 text-sm">{user.email}</p>
+                        className="flex flex-col items-start bg-gradient-to-r from-pink-100 via-white to-pink-100 p-5 rounded-xl shadow-md"
+                    >
+                        <p className="text-md font-medium">Name : {user.name}</p>
+                        <p className="text-gray-600 text-sm">Email : {user.email}</p>
+                        <p className="text-gray-500 text-sm break-all">Password : {user.password}</p>
+                        <p className="text-gray-500 text-sm">Role : {user.isAdmin ? "Admin" : "User"}</p>
                     </div>
                 ))}
             </div>
