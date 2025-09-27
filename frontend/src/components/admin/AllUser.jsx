@@ -39,7 +39,7 @@ const AllUser = () => {
 
                     <div
                         key={user._id}
-                        className="flex flex-col items-start bg-gradient-to-r from-pink-100 via-white to-pink-100 p-5 rounded-xl shadow-md"
+                        className="flex flex-col items-start bg-gradient-to-r from-white via-[#f8dcdb] to-white p-5 rounded-xl shadow-md"
                     >
                         <p className="text-md font-medium">Name : {user.name}</p>
                         <p className="text-gray-600 text-sm">Email : {user.email}</p>

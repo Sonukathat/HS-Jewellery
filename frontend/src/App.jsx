@@ -47,6 +47,7 @@ function App() {
         <Route path="/necklaces" element={<Neckless />} />
         <Route path="/shop-all" element={<Shopall />} />
         <Route path="/page-not-found" element={<Notfound />} />
+        <Route path="/profile" element={<Userprofile />} />
         <Route path="/admin" element={
           <AdminRoute>
             <Admin />
@@ -72,9 +73,12 @@ function App() {
             <DeleteCategory />
           </AdminRoute>
         } />
+        <Route path="/all-users" element={
+          <AdminRoute>
+            <AllUser />
+          </AdminRoute>
+        } />
       </Routes>
-      <Userprofile/>
-      <AllUser/>
     </>
   )
 }
