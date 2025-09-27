@@ -22,6 +22,7 @@ import DeleteCategory from "./components/admin/Deletecategory";
 import AdminRoute from "./components/admin/AdminRoute";
 import Notfound from "./components/Notfound";
 import Userprofile from "./components/Userprofile";
+import AllUser from "./components/admin/AllUser";
 
 function App() {
   return (
@@ -73,6 +74,7 @@ function App() {
         } />
       </Routes>
       <Userprofile/>
+      <AllUser/>
     </>
   )
 }
