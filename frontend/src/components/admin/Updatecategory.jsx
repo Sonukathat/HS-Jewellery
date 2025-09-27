@@ -12,7 +12,9 @@ function UpdateCategory() {
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
     setImages(files);
-    setItems(files.map(() => ({ name: "", price: "" }))); // dynamic inputs for each image
+
+    // Har image ke liye ek empty name/price entry
+    setItems(files.map(() => ({ name: "", price: "" })));
   };
 
   // Handle name/price change for each image
@@ -28,6 +30,7 @@ function UpdateCategory() {
 
     if (!oldName) return alert("Please enter the current category name");
     if (!newName) return alert("Please enter the new category name");
+
     if (images.length !== items.length) {
       return alert("Please fill all names and prices for selected images");
     }
@@ -35,14 +38,18 @@ function UpdateCategory() {
     try {
       const token = localStorage.getItem("token");
       const formData = new FormData();
+
       formData.append("oldName", oldName);
       formData.append("newName", newName);
       formData.append("description", description);
 
+      // Add images
       images.forEach((img) => formData.append("images", img));
-      items.forEach((item, idx) => {
-        formData.append(`itemNames[${idx}]`, item.name);
-        formData.append(`itemPrices[${idx}]`, item.price);
+
+      // Add items (array me bhejna)
+      items.forEach((item) => {
+        formData.append("itemNames", item.name);
+        formData.append("itemPrices", item.price);
       });
 
       await axios.put("http://localhost:5000/category/update", formData, {
@@ -58,6 +65,8 @@ function UpdateCategory() {
       setDescription("");
       setImages([]);
       setItems([]);
+      console.log("Sending Items:", items);
+
     } catch (error) {
       console.error(error);
       alert(error.response?.data?.message || "Update failed!");
@@ -76,7 +85,9 @@ function UpdateCategory() {
 
         {/* Old Category Name */}
         <div className="flex flex-col">
-          <label className="mb-2 font-semibold text-gray-700">Current Category Name</label>
+          <label className="mb-2 font-semibold text-gray-700">
+            Current Category Name
+          </label>
           <input
             type="text"
             value={oldName}
@@ -89,7 +100,9 @@ function UpdateCategory() {
 
         {/* New Category Name */}
         <div className="flex flex-col">
-          <label className="mb-2 font-semibold text-gray-700">New Category Name</label>
+          <label className="mb-2 font-semibold text-gray-700">
+            New Category Name
+          </label>
           <input
             type="text"
             value={newName}
@@ -102,7 +115,9 @@ function UpdateCategory() {
 
         {/* Description */}
         <div className="flex flex-col">
-          <label className="mb-2 font-semibold text-gray-700">Category Description</label>
+          <label className="mb-2 font-semibold text-gray-700">
+            Category Description
+          </label>
           <input
             type="text"
             value={description}
@@ -114,7 +129,9 @@ function UpdateCategory() {
 
         {/* Upload Images */}
         <div className="flex flex-col">
-          <label className="mb-2 font-semibold text-gray-700">Upload New Images</label>
+          <label className="mb-2 font-semibold text-gray-700">
+            Upload New Images
+          </label>
           <input
             type="file"
             multiple
@@ -137,7 +154,7 @@ function UpdateCategory() {
                 className="w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none"
               />
               <input
-                type="text"
+                type="number"
                 value={item.price}
                 onChange={(e) => handleItemChange(idx, "price", e.target.value)}
                 placeholder={`Price ${idx + 1}`}
