@@ -21,6 +21,7 @@ import Updatecategory from "./components/admin/Updatecategory";
 import DeleteCategory from "./components/admin/Deletecategory";
 import AdminRoute from "./components/admin/AdminRoute";
 import Notfound from "./components/Notfound";
+import Userprofile from "./components/Userprofile";
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
           </AdminRoute>
         } />
       </Routes>
+      <Userprofile/>
     </>
   )
 }
