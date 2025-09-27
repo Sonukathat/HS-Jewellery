@@ -65,19 +65,42 @@ export const getCategory = async (req, res) => {
 export const updateCategory = async (req, res) => {
   try {
     const { oldName, newName, description } = req.body;
-    const itemNames = req.body.itemNames; // array of names
-    const itemPrices = req.body.itemPrices; // array of prices
+    let itemNames = req.body.itemNames;
+    let itemPrices = req.body.itemPrices;
 
-    if (!oldName) return res.status(400).json({ message: "Old name required" });
+    if (!oldName) {
+      return res.status(400).json({ message: "Old name required" });
+    }
 
+    // Agar sirf ek hi input aya ho to usko array bana lo
+    if (typeof itemNames === "string") itemNames = [itemNames];
+    if (typeof itemPrices === "string") itemPrices = [itemPrices];
+
+    // name + price ko pair karo
+    const details = itemNames.map((n, idx) => ({
+      name: n,
+      price: Number(itemPrices[idx]),
+    }));
+
+    // Update object
     const updateData = {
       name: newName,
       description,
-      items: itemNames.map((n, idx) => ({ name: n, price: itemPrices[idx] }))
     };
 
+    // Agar naye images bhi aaye hain
     if (req.files && req.files.length > 0) {
-      updateData.images = req.files.map(f => f.filename);
+      const imageUrls = req.files.map(
+        (f) => `${req.protocol}://${req.get("host")}/uploads/${f.filename}`
+      );
+
+      updateData.images = {
+        urls: imageUrls,
+        details: details,
+      };
+    } else {
+      // Sirf details update karni ho
+      updateData["images.details"] = details;
     }
 
     const updatedCategory = await Category.findOneAndUpdate(
@@ -90,12 +113,16 @@ export const updateCategory = async (req, res) => {
       return res.status(404).json({ message: "Category not found" });
     }
 
-    res.status(200).json({ message: "Category updated successfully", updatedCategory });
+    res.status(200).json({
+      message: "Category updated successfully",
+      updatedCategory,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error while updating category" });
   }
 };
+
 
 
 
