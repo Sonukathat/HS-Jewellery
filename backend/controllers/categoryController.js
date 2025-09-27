@@ -6,13 +6,15 @@ export const createCategory = async (req, res) => {
   try {
     const { name, description } = req.body;
     const itemNames = req.body.itemNames;
-    const itemPrices = req.body.itemPrices; 
+    const itemPrices = req.body.itemPrices;
 
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ message: "Images are required" });
     }
 
-    const imageUrls = req.files.map((file) => file.filename); //  file.path
+    const imageUrls = req.files.map((file) => {
+      return `${req.protocol}://${req.get("host")}/uploads/${file.filename}`;
+    });
 
     const details = itemNames.map((n, idx) => ({
       name: n,
@@ -39,24 +41,24 @@ export const createCategory = async (req, res) => {
 
 
 export const getCategory = async (req, res) => {
-    try {
+  try {
 
-        const categories = await Category.find();
+    const categories = await Category.find();
 
-        if (categories.length === 0) {
-            res.status(400).json({
-                success: false,
-                message: "category is empty"
-            })
-        }
-
-        res.status(200).json({
-            message: true,
-            categories
-        });
-    } catch (error) {
-        res.status(500).json({ message: error.message })
+    if (categories.length === 0) {
+      res.status(400).json({
+        success: false,
+        message: "category is empty"
+      })
     }
+
+    res.status(200).json({
+      message: true,
+      categories
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
 }
 
 
@@ -103,7 +105,7 @@ export const deleteCategory = async (req, res) => {
     const { name } = req.params;
 
     const deleted = await Category.findOneAndDelete({
-      name: { $regex: new RegExp(`^${name}$`, "i") } 
+      name: { $regex: new RegExp(`^${name}$`, "i") }
     });
 
     if (!deleted) {
