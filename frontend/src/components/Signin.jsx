@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import axios from "axios";
@@ -8,6 +8,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function Signin() {
+
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,21 +21,20 @@ function Signin() {
         email,
         password,
       });
-      console.log(res)
+      // console.log(res)
       const token = res.data.token;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(res.data.user))
 
-      // if (data.user.isAdmin) {
-      //   navigate("/admin");
-      // } else {
-      //   navigate("/");
-      // }
+      if (res.data.user.isAdmin) {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
 
       toast.success("Signin successful!");
       setEmail('');
       setPassword('');
-
     } catch (error) {
       toast.error(error.response?.data?.message || "Signin failed");
       console.error("Signin error:", error);
