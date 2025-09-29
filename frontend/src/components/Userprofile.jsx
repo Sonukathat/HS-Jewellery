@@ -21,6 +21,11 @@ const Userprofile = () => {
         fetchUser();
     }, []);
 
+    const handleLogout = ()=>{
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+    }
+
     if (!user.name || !user.email) {
         return <div className="text-center mt-10">Loading...</div>;
     }
@@ -33,6 +38,7 @@ const Userprofile = () => {
 
             <h2 className="text-2xl font-bold text-black mb-2">{user.name}</h2>
             <p className="text-black text-sm opacity-80">{user.email}</p>
+            <button onClick={handleLogout} className="bg-white rounded-2xl cursor-pointer px-4 py-1 mt-4">Log Out</button>
         </div>
     );
 };
