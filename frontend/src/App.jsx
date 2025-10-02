@@ -23,6 +23,7 @@ import AdminRoute from "./components/admin/AdminRoute";
 import Notfound from "./components/Notfound";
 import Userprofile from "./components/Userprofile";
 import AllUser from "./components/admin/AllUser";
+import Createorder from "./components/Createorder";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="/shop-all" element={<Shopall />} />
         <Route path="/page-not-found" element={<Notfound />} />
         <Route path="/profile" element={<Userprofile />} />
+        <Route path="/order" element={<Createorder />} />
         <Route path="/admin" element={
           <AdminRoute>
             <Admin />
