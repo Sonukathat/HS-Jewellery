@@ -14,10 +14,10 @@ function Main() {
     <>
       <Hero />
       <Trending />
-      {/* <Category /> */}
+      <Category />
       <Natural />
-      {/* <StealDeal /> */}
-      {/* <Jhumkas /> */}
+      <StealDeal />
+      <Jhumkas />
       <Getknow />
       <Blogpost />
       <Feedback />
