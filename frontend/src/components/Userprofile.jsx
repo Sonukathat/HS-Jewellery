@@ -1,13 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Userprofile = () => {
     const [user, setUser] = useState({});
+    const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUser = async () => {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                navigate('/login');
+                return;
+            }
+
             try {
-                const token = localStorage.getItem("token");
                 const res = await axios.get('http://localhost:3000/users/profile', {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -18,12 +27,15 @@ const Userprofile = () => {
                 console.log("error", error);
             }
         };
+
         fetchUser();
     }, []);
 
-    const handleLogout = ()=>{
+    const handleLogout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
+        navigate('/login');
+
     }
 
     if (!user.name || !user.email) {
@@ -39,6 +51,7 @@ const Userprofile = () => {
             <h2 className="text-2xl font-bold text-black mb-2">{user.name}</h2>
             <p className="text-black text-sm opacity-80">{user.email}</p>
             <button onClick={handleLogout} className="bg-white rounded-2xl cursor-pointer px-4 py-1 mt-4">Log Out</button>
+            {error && <p className="text-red-500">{error}</p>}
         </div>
     );
 };
