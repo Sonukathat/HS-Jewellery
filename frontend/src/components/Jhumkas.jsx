@@ -10,7 +10,7 @@ function Jhumkas() {
         const fetchJumka = async () => {
             try {
                 const res = await axios.get('http://localhost:3000/category/get');
-                const selected = res.data.categories[1].images;
+                const selected = res.data.categories[4].images;
 
                 let needed = selected.details.map((detail, index) => ({
                     name: detail.name,

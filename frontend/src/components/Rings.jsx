@@ -11,7 +11,7 @@ function Rings() {
     const fetchRings = async () => {
       try {
         const res = await axios.get("http://localhost:3000/category/get");
-        const ringCategory = res.data.categories[5];
+        const ringCategory = res.data.categories[3];
         const ringItems = ringCategory.images.urls.map((url, index) => ({
           image: url,
           name: ringCategory.images.details[index]?.name || "No Name",

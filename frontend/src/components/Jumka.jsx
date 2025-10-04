@@ -11,7 +11,7 @@ function Jumka() {
     const fetchJumkas = async () => {
       try {
         const res = await axios.get('http://localhost:3000/category/get');
-        const jumkaCategory = res.data.categories[1];
+        const jumkaCategory = res.data.categories[4];
         const jumkaItems = jumkaCategory.images.urls.map((url, index) => ({
           image: url,
           name: jumkaCategory.images.details[index]?.name || "No Name",

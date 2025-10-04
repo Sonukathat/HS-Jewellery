@@ -13,7 +13,7 @@ function Earings() {
         const res = await axios.get("http://localhost:3000/category/get");
 
         
-        const earringCategory = res.data.categories[4];
+        const earringCategory = res.data.categories[0];
 
         
         const earringItems = earringCategory.images.urls.map((url, index) => ({
