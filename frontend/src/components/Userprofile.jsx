@@ -12,7 +12,7 @@ const Userprofile = () => {
         const fetchUser = async () => {
             const token = localStorage.getItem("token");
             if (!token) {
-                navigate('/login');
+                navigate('/signin');
                 return;
             }
 
@@ -25,6 +25,7 @@ const Userprofile = () => {
                 setUser(res.data.data);
             } catch (error) {
                 console.log("error", error);
+                setError("Failed to load user profile.");
             }
         };
 
