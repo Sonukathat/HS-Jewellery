@@ -40,7 +40,7 @@ function Addcategory() {
         formData.append(`itemPrices[${idx}]`, item.price);
       });
 
-      await axios.post("http://localhost:5000/category/add", formData, {
+      await axios.post("http://localhost:3000/category/add", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

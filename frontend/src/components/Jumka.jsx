@@ -10,7 +10,7 @@ function Jumka() {
   useEffect(() => {
     const fetchJumkas = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/category/get');
+        const res = await axios.get('http://localhost:3000/category/get');
         const jumkaCategory = res.data.categories[1];
         const jumkaItems = jumkaCategory.images.urls.map((url, index) => ({
           image: url,

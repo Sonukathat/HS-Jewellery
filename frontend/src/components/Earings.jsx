@@ -10,7 +10,7 @@ function Earings() {
   useEffect(() => {
     const fetchEarrings = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/category/get");
+        const res = await axios.get("http://localhost:3000/category/get");
 
         
         const earringCategory = res.data.categories[4];
