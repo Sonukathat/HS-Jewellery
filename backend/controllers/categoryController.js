@@ -12,9 +12,8 @@ export const createCategory = async (req, res) => {
       return res.status(400).json({ message: "Images are required" });
     }
 
-    const imageUrls = req.files.map((file) => {
-      return `${req.protocol}://${req.get("host")}/uploads/${file.filename}`;
-    });
+    // Cloudinary URLs
+    const imageUrls = req.files.map((file) => file.path);
 
     const details = itemNames.map((n, idx) => ({
       name: n,
