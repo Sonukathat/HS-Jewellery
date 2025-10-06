@@ -4,36 +4,62 @@ import Category from "../models/categoryModel.js";
 
 export const createCategory = async (req, res) => {
   try {
-    const { name, description } = req.body;
-    const itemNames = req.body.itemNames;
-    const itemPrices = req.body.itemPrices;
+    console.log("Body:", req.body);
+    console.log("Files:", req.files);
 
+    const { name, description } = req.body;
+
+    // -------------------------------------------------
+    // Parse 'details' if it's sent as JSON string
+    let details = req.body.details;
+    if (details) {
+      if (typeof details === "string") {
+        details = JSON.parse(details);
+      }
+    } else {
+      // agar itemNames/itemPrices bheje gaye hain
+      const itemNames = req.body.itemNames;
+      const itemPrices = req.body.itemPrices;
+
+      let namesArray = itemNames;
+      let pricesArray = itemPrices;
+
+      if (typeof itemNames === "string") namesArray = [itemNames];
+      if (typeof itemPrices === "string") pricesArray = [itemPrices];
+
+      if (namesArray && namesArray.length > 0) {
+        details = namesArray.map((n, i) => ({
+          name: n,
+          price: Number(pricesArray[i]),
+        }));
+      } else {
+        details = [];
+      }
+    }
+    // -------------------------------------------------
+
+    // multer ke through images aaye?
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ message: "Images are required" });
     }
 
-    // Cloudinary URLs
+    // Cloudinary se path URLs nikal lo
     const imageUrls = req.files.map((file) => file.path);
-
-    const details = itemNames.map((n, idx) => ({
-      name: n,
-      price: Number(itemPrices[idx])
-    }));
 
     const category = new Category({
       name,
       description,
       images: {
         urls: imageUrls,
-        details
+        details,
       },
     });
 
     await category.save();
-    res.status(201).json({ success: true, category });
+    res.status(201).json({ success: true, message: "Category added successfully", category });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server Error" });
+    console.error("Error:", error);
+    res.status(500).json({ message: "Server Error", error: error.message });
   }
 };
 
