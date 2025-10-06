@@ -4,65 +4,51 @@ import Category from "../models/categoryModel.js";
 
 export const createCategory = async (req, res) => {
   try {
-    console.log("Body:", req.body);
-    console.log("Files:", req.files);
-
     const { name, description } = req.body;
 
-    // -------------------------------------------------
-    // Parse 'details' if it's sent as JSON string
+    // Parse 'details' if sent as JSON string
     let details = req.body.details;
-    if (details) {
-      if (typeof details === "string") {
-        details = JSON.parse(details);
-      }
+    if (details && typeof details === "string") {
+      details = JSON.parse(details);
     } else {
-      // agar itemNames/itemPrices bheje gaye hain
-      const itemNames = req.body.itemNames;
-      const itemPrices = req.body.itemPrices;
+      // If itemNames/itemPrices sent via form-data
+      const itemNames = req.body.itemNames || [];
+      const itemPrices = req.body.itemPrices || [];
 
-      let namesArray = itemNames;
-      let pricesArray = itemPrices;
+      const namesArray = Array.isArray(itemNames) ? itemNames : [itemNames];
+      const pricesArray = Array.isArray(itemPrices) ? itemPrices : [itemPrices];
 
-      if (typeof itemNames === "string") namesArray = [itemNames];
-      if (typeof itemPrices === "string") pricesArray = [itemPrices];
-
-      if (namesArray && namesArray.length > 0) {
-        details = namesArray.map((n, i) => ({
-          name: n,
-          price: Number(pricesArray[i]),
-        }));
-      } else {
-        details = [];
-      }
+      details = namesArray.map((n, i) => ({
+        name: n,
+        price: Number(pricesArray[i]),
+      }));
     }
-    // -------------------------------------------------
 
-    // multer ke through images aaye?
+    // Check if images uploaded
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ message: "Images are required" });
     }
 
-    // Cloudinary se path URLs nikal lo
     const imageUrls = req.files.map((file) => file.path);
 
     const category = new Category({
       name,
       description,
-      images: {
-        urls: imageUrls,
-        details,
-      },
+      images: { urls: imageUrls, details },
     });
 
     await category.save();
-    res.status(201).json({ success: true, message: "Category added successfully", category });
+
+    res.status(201).json({
+      success: true,
+      message: "Category added successfully",
+      category,
+    });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ message: "Server Error", error: error.message });
   }
 };
-
 
 
 export const getCategory = async (req, res) => {
