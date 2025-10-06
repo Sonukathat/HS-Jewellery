@@ -13,7 +13,7 @@ function Neckless() {
         const res = await axios.get("http://localhost:3000/category/get");
 
         
-        const necklaceCategory = res.data.categories[1];
+        const necklaceCategory = res.data.categories[0];
 
         
         const necklaceItems = necklaceCategory.images.urls.map((url, index) => ({
