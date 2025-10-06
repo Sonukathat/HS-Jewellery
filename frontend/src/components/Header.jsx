@@ -5,7 +5,7 @@ import { CiSearch, CiShoppingCart } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import machki from "../assets/8D6D93BB-F102-40BF-9634-90888310B860.webp";
+import HS from "../assets/images.png";
 
 function Header() {
 
@@ -54,7 +54,7 @@ function Header() {
                     <RxHamburgerMenu className="text-2xl cursor-pointer" onClick={() => setMenuOpen(!menuOpen)} />
                 </div>
                 <div>
-                    <img src={machki} alt="machki" className="w-36 xl:w-44" />
+                    <img src={HS} alt="machki" className="w-10 xl:w-14 border rounded-[50%]" />
                 </div>
                 <div className="hidden lg:flex gap-3 xl:gap-8">
                     {items.map((item, index) => (
