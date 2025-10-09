@@ -5,7 +5,7 @@ import { CiSearch, CiShoppingCart } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import HS from "../assets/images.png";
+import HS from "/images.png";
 
 function Header() {
 
