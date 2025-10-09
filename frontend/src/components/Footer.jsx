@@ -22,7 +22,7 @@ function Footer() {
 
 
   return (
-    <div className="bg-[#f8dcdb]">
+    <div className="bg-[#FFD5D5]">
       <div className="flex flex-col gap-8 py-6 border-b border-gray-400">
         <div>
           <h2 className="text-2xl text-center font-serif">Quick links</h2>

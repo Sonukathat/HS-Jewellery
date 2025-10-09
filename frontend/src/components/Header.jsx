@@ -39,7 +39,7 @@ function Header() {
 
     return (
         <div className="w-full">
-            <div className="bg-[#f8dcdb] py-2 flex justify-center sm:justify-around">
+            <div className="bg-[#FFD5D5] py-2 flex justify-center sm:justify-around">
                 <div className="hidden sm:block">
                     <a href="https://www.instagram.com/" target="_blank"><FaInstagram className="text-xl cursor-pointer" /></a>
                 </div>

@@ -29,7 +29,7 @@ function Feedback() {
     ];
 
     return (
-        <div className="bg-[#7b614e] mt-8 py-6 flex flex-col gap-10">
+        <div className="bg-[#896C6C] mt-8 py-6 flex flex-col gap-10">
             <div>
                 <h2 className="text-4xl text-white ml-4 font-serif">Feedback</h2>
             </div>
