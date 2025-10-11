@@ -52,7 +52,7 @@ function UpdateCategory() {
         formData.append("itemPrices", item.price);
       });
 
-      await axios.put("http://localhost:3000/category/update", formData, {
+      await axios.put("https://machki.vercel.app/category/update", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

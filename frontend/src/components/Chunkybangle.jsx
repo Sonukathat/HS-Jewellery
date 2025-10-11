@@ -10,7 +10,7 @@ function Chunkybangle() {
   useEffect(() => {
     const fetchBangles = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/category/get");
+        const res = await axios.get("https://machki.vercel.app/category/get");
         const bangleCategory = res.data.categories[5];
         const bangleItems = bangleCategory.images.urls.map((url, index) => ({
           image: url,
