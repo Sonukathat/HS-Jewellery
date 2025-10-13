@@ -10,7 +10,7 @@ function Rings() {
   useEffect(() => {
     const fetchRings = async () => {
       try {
-        const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
+        const res = await axios.get("http://localhost:3000/category/get");
         const ringCategory = res.data.categories[3];
         const ringItems = ringCategory.images.urls.map((url, index) => ({
           image: url,
