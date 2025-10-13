@@ -3,29 +3,39 @@ import axios from "axios";
 
 function StealDeal() {
   const [stealImg, setStealImg] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchStealImg = async () => {
       try {
+        setLoading(true);
         const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
         const categories = res.data.categories;
 
-        // Har category se 2 products (details + url) nikale
         const selected = categories.flatMap(cat => {
           return cat.images.details.slice(0, 2).map((item, index) => ({
-            ...item,                          // name, price etc.
-            image: cat.images.urls[index],    // url add
+            ...item,
+            image: cat.images.urls[index],
           }));
         });
 
-        // Sirf 10 products rakho
         setStealImg(selected.slice(0, 10));
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching images:", error);
+        setLoading(false);
       }
     };
     fetchStealImg();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-96">
+        <div className="loader border-t-4 border-b-4 border-green-900 rounded-full w-12 h-12 animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -37,7 +47,7 @@ function StealDeal() {
         {stealImg.map((item, i) => (
           <div
             key={i}
-            className=" cursor-pointer border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out"
+            className="cursor-pointer border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out"
           >
             <img
               src={item.image}
@@ -49,9 +59,7 @@ function StealDeal() {
             </button>
             <p className="mt-2 ml-5 font-serif">{item.name}</p>
             <div className="flex">
-              <p className="my-3 ml-5 text-gray-400 line-through">
-                Rs 1,099.00
-              </p>
+              <p className="my-3 ml-5 text-gray-400 line-through">Rs 1,099.00</p>
               <p className="my-3 ml-5">Rs {item.price}</p>
             </div>
           </div>
