@@ -6,16 +6,18 @@ import Footer from "./Footer";
 
 function Earings() {
   const [earrings, setEarrings] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchEarrings = async () => {
       try {
+        setLoading(true);
         const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
 
-        
+        // Earrings category fetch (2nd index)
         const earringCategory = res.data.categories[1];
 
-        
+        // Map URLs + details
         const earringItems = earringCategory.images.urls.map((url, index) => ({
           image: url,
           name: earringCategory.images.details[index]?.name || "No Name",
@@ -23,13 +25,27 @@ function Earings() {
         }));
 
         setEarrings(earringItems);
+        setLoading(false);
       } catch (err) {
         console.error("Error fetching earrings:", err);
+        setLoading(false);
       }
     };
 
     fetchEarrings();
   }, []);
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="flex justify-center items-center h-96">
+          <div className="loader border-t-4 border-b-4 border-green-900 rounded-full w-12 h-12 animate-spin"></div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
