@@ -2,7 +2,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 function Details({ heading, headingimage, all }) {
   return (
-    <div className="py-4">
+    <div className="py-12">
       <div className="flex flex-col px-1 sm:flex-row sm:items-center justify-around">
         <h2 className="text-4xl my-4 ml-4 font-serif">{heading}</h2>
         <img
@@ -14,7 +14,7 @@ function Details({ heading, headingimage, all }) {
 
       <div className="flex flex-row-reverse">
         <p className="text-sm mr-6 mt-4 lg:mr-36 xl:mr-48">
-          Sort by: Alphabetically, A-Z ({all.length} products)
+          A-Z ({all.length} products)
         </p>
       </div>
 
@@ -35,10 +35,10 @@ function Details({ heading, headingimage, all }) {
         ))}
       </div>
 
-      <div className="mt-4 flex justify-center gap-8 text-2xl">
+      {/* <div className="mt-4 flex justify-center gap-8 text-2xl">
         <IoIosArrowBack className="cursor-pointer" />
         <IoIosArrowForward className="cursor-pointer" />
-      </div>
+      </div> */}
     </div>
   );
 }
