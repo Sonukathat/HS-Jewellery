@@ -19,7 +19,7 @@ import Addcategory from "./components/admin/Addcategory";
 import Getcategory from "./components/admin/Getcategory";
 import Updatecategory from "./components/admin/Updatecategory";
 import DeleteCategory from "./components/admin/Deletecategory";
-import AdminRoute from "./components/admin/AdminRoute";
+import AdminRoute from "./components/admin/Adminroute";
 import Notfound from "./components/Notfound";
 import Userprofile from "./components/Userprofile";
 import AllUser from "./components/admin/AllUser";
