@@ -6,30 +6,45 @@ import Footer from "./Footer";
 
 function Neckless() {
   const [necklaces, setNecklaces] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchNecklaces = async () => {
       try {
+        setLoading(true);
         const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
 
-        
+        // Necklace category (0 index)
         const necklaceCategory = res.data.categories[0];
 
-        
         const necklaceItems = necklaceCategory.images.urls.map((url, index) => ({
           image: url,
           name: necklaceCategory.images.details[index]?.name || "No Name",
-          price: necklaceCategory.images.details[index]?.price || "N/A"
+          price: necklaceCategory.images.details[index]?.price || "N/A",
         }));
 
         setNecklaces(necklaceItems);
+        setLoading(false);
       } catch (err) {
         console.error("Error fetching Necklaces:", err);
+        setLoading(false);
       }
     };
 
     fetchNecklaces();
   }, []);
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="flex justify-center items-center h-96">
+          <div className="loader border-t-4 border-b-4 border-green-900 rounded-full w-12 h-12 animate-spin"></div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
