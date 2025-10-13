@@ -6,24 +6,43 @@ import Footer from "./Footer";
 
 function Rings() {
   const [rings, setRings] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchRings = async () => {
       try {
+        setLoading(true);
         const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
+
         const ringCategory = res.data.categories[3];
+
         const ringItems = ringCategory.images.urls.map((url, index) => ({
           image: url,
           name: ringCategory.images.details[index]?.name || "No Name",
-          price: ringCategory.images.details[index]?.price || "N/A"
+          price: ringCategory.images.details[index]?.price || "N/A",
         }));
+
         setRings(ringItems);
+        setLoading(false);
       } catch (err) {
         console.error("Error fetching rings:", err);
+        setLoading(false);
       }
     };
     fetchRings();
   }, []);
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="flex justify-center items-center h-96">
+          <div className="loader border-t-4 border-b-4 border-green-900 rounded-full w-12 h-12 animate-spin"></div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
