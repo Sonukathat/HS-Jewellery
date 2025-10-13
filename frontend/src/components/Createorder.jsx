@@ -12,7 +12,7 @@ function CreateOrder() {
       const itemsArray = orderItems.split(",").map(item => item.trim());
 
       const res = await axios.post(
-        "https://machki.vercel.app/order/add", // backend endpoint
+        "https://hs-jewellery.vercel.app/order/add", // backend endpoint
         { orderItems: itemsArray, shippingAddress }
       );
 

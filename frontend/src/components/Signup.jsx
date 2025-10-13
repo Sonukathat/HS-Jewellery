@@ -14,7 +14,7 @@ function Signup() {
     const handleUser = async (event) => {
         event.preventDefault();
         try {
-            await axios.post('https://machki.vercel.app/users/signup', {
+            await axios.post('https://hs-jewellery.vercel.app/users/signup', {
                 name,
                 email,
                 password

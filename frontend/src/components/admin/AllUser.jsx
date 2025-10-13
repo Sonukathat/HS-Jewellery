@@ -11,7 +11,7 @@ const AllUser = () => {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.get("https://machki.vercel.app/users/alluser", {
+        const res = await axios.get("https://hs-jewellery.vercel.app/users/alluser", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -31,7 +31,7 @@ const AllUser = () => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`https://machki.vercel.app/users/delete/${id}`, {
+      await axios.delete(`https://hs-jewellery.vercel.app/users/delete/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

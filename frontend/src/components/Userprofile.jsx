@@ -17,7 +17,7 @@ const Userprofile = () => {
             }
 
             try {
-                const res = await axios.get('https://machki.vercel.app/users/profile', {
+                const res = await axios.get('https://hs-jewellery.vercel.app/users/profile', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

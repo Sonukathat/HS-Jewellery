@@ -10,7 +10,7 @@ function Earings() {
   useEffect(() => {
     const fetchEarrings = async () => {
       try {
-        const res = await axios.get("https://machki.vercel.app/category/get");
+        const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
 
         
         const earringCategory = res.data.categories[1];

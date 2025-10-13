@@ -7,7 +7,7 @@ function Trending() {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                let res = await axios.get('https://machki.vercel.app/category/get');
+                let res = await axios.get('https://hs-jewellery.vercel.app/category/get');
                 let first3Categ = res.data.categories.slice(0, 3);
 
                 let allProducts = [];

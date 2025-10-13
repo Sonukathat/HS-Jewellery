@@ -9,7 +9,7 @@ function Jhumkas() {
     useEffect(() => {
         const fetchJumka = async () => {
             try {
-                const res = await axios.get('https://machki.vercel.app/category/get');
+                const res = await axios.get('https://hs-jewellery.vercel.app/category/get');
                 const selected = res.data.categories[4].images;
 
                 let needed = selected.details.map((detail, index) => ({

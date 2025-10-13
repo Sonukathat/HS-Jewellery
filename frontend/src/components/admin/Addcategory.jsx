@@ -40,7 +40,7 @@ function Addcategory() {
         formData.append(`itemPrices[${idx}]`, item.price);
       });
 
-      await axios.post("https://machki.vercel.app/category/add", formData, {
+      await axios.post("https://hs-jewellery.vercel.app/category/add", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
