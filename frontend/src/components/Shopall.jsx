@@ -12,7 +12,7 @@ function Shopall() {
     const fetchAll = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
+        const res = await axios.get("http://localhost:3000/category/get");
 
         const allCategories = res.data.categories.flatMap(cat =>
           cat.images.urls.slice(0, 3).map((url, index) => ({

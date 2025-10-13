@@ -1,4 +1,4 @@
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+// import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 function Details({ heading, headingimage, all }) {
   return (
