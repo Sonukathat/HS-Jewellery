@@ -5,30 +5,27 @@ function FAQ() {
 
     const faqData = [
         {
-            question: "Are your jewelry Water-proof ?",
-            answer: "Yes, our jewelry is water-resistant and safe for daily use.",
+            question: "Are your jewelry Water-proof?",
+            answer: "Yes, our jewelry is water-resistant and can handle everyday splashes. You can wear it while washing your hands or in light rain. However, avoid wearing it while swimming or showering. Prolonged exposure to water may reduce its shine. Proper care will keep it looking new for years.",
         },
         {
             question: "How long does it takes to deliver?",
-            answer: "Delivery typically takes 3-5 business days depending on your location.",
-        },
-        {
-            question: "How to know ring size ?",
-            answer: "You can refer to our ring size guide available on the product page.",
+            answer: "Delivery usually takes 3-5 business days depending on your location. Once your order is shipped, you will receive a tracking link. Sometimes, remote areas may take a little longer. We always try to ensure timely delivery. You can contact support if there are any delays.",
         },
         {
             question: "Are your Bracelets standard size?",
-            answer: "Yes, they are adjustable to fit most wrist sizes.",
+            answer: "Yes, our bracelets are adjustable and fit most wrist sizes. They are designed for comfort and daily wear. You can tighten or loosen them as needed. The adjustable feature makes them perfect for gifting. Enjoy a stylish fit every time you wear it.",
         },
         {
-            question: "How to order for COD?",
-            answer: "Simply choose the Cash on Delivery option during checkout.",
+            question: "How to know ring size?",
+            answer: "You can check our ring size guide available on the product page. Measure your finger carefully using the instructions. If you are unsure, our support team is happy to help. Remember, finger size may change slightly with temperature. Choosing the right size ensures a perfect fit.",
         },
         {
-            question: "How can I take care of these jewelleries ?",
-            answer: "Avoid harsh chemicals and store them in a dry place when not in use.",
+            question: "How can I take care of these jewelleries?",
+            answer: "Avoid harsh chemicals, perfumes, and moisture to maintain shine. Store them in a dry, soft pouch when not in use. Clean them gently with a soft cloth. Wearing them carefully will prevent scratches and damage. Following these tips keeps your jewelry looking brand new.",
         },
     ];
+
 
     const [openIndex, setOpenIndex] = useState(null);
 
