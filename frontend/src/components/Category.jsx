@@ -1,30 +1,40 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 function Category() {
-  const [catImg, setcatImg] = useState([]);
+  const [catImg, setCatImg] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCategory = async () => {
       try {
+        setLoading(true);
         const res = await axios.get('https://hs-jewellery.vercel.app/category/get');
         const categories = res.data.categories;
 
+        const selectedImages = categories.map(cat => ({
+          name: cat.name,
+          image: cat.images.urls[0]
+        }));
 
-          const selectedImages = categories.map(cat => ({
-            name: cat.name,
-            image: cat.images.urls[0] 
-          }));
-
-        setcatImg(selectedImages);
+        setCatImg(selectedImages);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching images:", error);
+        setLoading(false);
       }
     }
 
     fetchCategory();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-96">
+        <div className="loader border-t-4 border-b-4 border-gray-900 rounded-full w-12 h-12 animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div>
