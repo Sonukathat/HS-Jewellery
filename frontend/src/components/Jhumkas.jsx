@@ -64,7 +64,7 @@ function Jhumkas() {
         ))}
       </div>
       <div className="flex justify-center py-8">
-        <button className="bg-green-950 text-white px-8 py-3 rounded-md cursor-pointer">
+        <button className="bg-[#A58A6C] text-white px-8 py-3 rounded-md cursor-pointer">
           View all
         </button>
       </div>

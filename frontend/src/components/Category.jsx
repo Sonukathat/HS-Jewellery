@@ -57,7 +57,7 @@ function Category() {
         ))}
       </div>
       <div className='flex justify-center py-8'>
-        <button className='bg-gray-800 px-8 py-3 text-white rounded-md cursor-pointer'>
+        <button className='bg-[#A58A6C] px-8 py-3 text-white rounded-md cursor-pointer'>
           View all
         </button>
       </div>

@@ -8,7 +8,7 @@ function Natural() {
       <div className='flex flex-col items-center lg:w-1/2'>
         <h2 className='mt-20 text-3xl font-serif'>Natural Handcrafted Stone Jewelry</h2>
         <p className='mt-8 font-serif'>Elevate Your Style with Sustainable, One-of-a-Kind Jewelry Pieces. When you choose handcrafted jewelry it's more than making a statement, it's a sustainable fashion choice supporting local artisans.</p>
-        <button className='bg-[#f8dcdb] text-black mt-8 px-8 py-3 rounded-md'>Shop Now</button>
+        <button className='bg-[#A58A6C] text-black mt-8 px-8 py-3 rounded-md'>Shop Now</button>
       </div>
     </div>
   )
