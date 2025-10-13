@@ -7,7 +7,7 @@ function StealDeal() {
   useEffect(() => {
     const fetchStealImg = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/category/get");
+        const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
         const categories = res.data.categories;
 
         // Har category se 2 products (details + url) nikale

@@ -10,7 +10,7 @@ function Shopall() {
   useEffect(() => {
     const fetchAll = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/category/get");
+        const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
 
         // Combine image URLs with corresponding name & price
         const allCategories = res.data.categories.flatMap(cat =>

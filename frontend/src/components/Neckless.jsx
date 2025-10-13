@@ -10,7 +10,7 @@ function Neckless() {
   useEffect(() => {
     const fetchNecklaces = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/category/get");
+        const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
 
         
         const necklaceCategory = res.data.categories[0];

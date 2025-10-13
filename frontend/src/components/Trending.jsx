@@ -3,11 +3,13 @@ import axios from "axios";
 
 function Trending() {
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                let res = await axios.get('http://localhost:3000/category/get');
+                setLoading(true);
+                let res = await axios.get('https://hs-jewellery.vercel.app/category/get');
                 let first3Categ = res.data.categories.slice(0, 3);
 
                 let allProducts = [];
@@ -15,29 +17,36 @@ function Trending() {
                 first3Categ.forEach((category) => {
                     let imagesData = category.images;
 
-                    // Har category se sirf 4 items lo
                     let combined = imagesData.details.slice(0, 4).map((item, index) => ({
                         ...item,
                         image: imagesData.urls[index],
                     }));
 
-                    // All products me add kar do
                     allProducts = [...allProducts, ...combined];
                 });
 
                 setProducts(allProducts);
-
+                setLoading(false);
             } catch (error) {
                 console.log("Error Fetching Images", error);
+                setLoading(false);
             }
         }
-        fetchImages()
-    }, [])
+        fetchImages();
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-96">
+                <div className="loader border-t-4 border-b-4 border-gray-900 rounded-full w-12 h-12 animate-spin"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="flex flex-col gap-8">
             <div>
-                <h2 className="text-4xl font-serif   my-4 ml-4">Trending Now</h2>
+                <h2 className="text-4xl font-serif my-4 ml-4">Trending Now</h2>
             </div>
             <div className="grid grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {products.slice(0, 12).map((item, i) => (
