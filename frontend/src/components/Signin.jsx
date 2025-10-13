@@ -17,7 +17,7 @@ function Signin() {
   const handleSignin = async (event) => {
     event.preventDefault();
     try {
-      const res = await axios.post('https://hs-jewellery.vercel.app/users/login', {
+      const res = await axios.post('http://localhost:3000/users/login', {
         email,
         password,
       });

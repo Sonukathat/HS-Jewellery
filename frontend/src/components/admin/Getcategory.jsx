@@ -7,7 +7,7 @@ function Getcategory() {
     useEffect(() => {
         const fetchCategory = async () => {
             try {
-                const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
+                const res = await axios.get("http://localhost:3000/category/get");
 
                 const categories = res.data.categories;
 
