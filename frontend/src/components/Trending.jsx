@@ -59,13 +59,20 @@ function Trending() {
                             alt={item.name}
                             className="h-96 w-full transition-transform duration-500 ease-in-out transform hover:scale-101"
                         />
-                        <p className="mt-8 ml-5 font-serif">{item.name}</p>
-                        <p className="my-3 ml-5">{item.price}</p>
+                        <div className="flex justify-between items-center p-4">
+                            <div>
+                                <p className="font-serif">{item.name}</p>
+                                <p className="mt-1">{item.price}</p>
+                            </div>
+                            <button className="bg-[#A58A6C] text-white text-xs px-1 py-1 rounded">
+                                Buy Now
+                            </button>
+                        </div>
                     </div>
                 ))}
             </div>
             <div className="flex justify-center">
-                <button className="bg-[#A58A6C] px-8 py-3 text-white rounded-md cursor-pointer">
+                <button className="bg-[#A58A6C] px-8 py-3 text-white rounded-md cursor-pointer hover:bg-[#8c6f53] transition-colors duration-300">
                     View all
                 </button>
             </div>
