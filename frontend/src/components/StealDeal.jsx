@@ -60,7 +60,7 @@ function StealDeal() {
             <p className="mt-2 ml-5 font-serif">{item.name}</p>
             <div className="flex justify-between items-center">
               <div className="flex">
-                <p className="my-3 ml-5">Rs {item.price}</p>
+                <p className="my-3 ml-5">₹ {item.price}</p>
               </div>
               <button className="mr-2 bg-gradient-to-r from-[#f4d7c2] to-[#FFE2F0] text-black font-serif text-xs px-2 py-1 rounded cursor-pointer hover:from-[#ffd1a8] hover:to-[#ffc7de] transition all duration-300">
                 Buy Now
