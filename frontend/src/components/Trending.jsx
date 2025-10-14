@@ -64,7 +64,7 @@ function Trending() {
                                 <p className="font-serif">{item.name}</p>
                                 <p className="mt-1">₹ {item.price}</p>
                             </div>
-                            <button className="bg-gradient-to-r from-[#f4d7c2] to-[#FFE2F0] text-black font-serif text-xs px-2 py-1 rounded cursor-pointer hover:from-[#ffd1a8] hover:to-[#ffc7de] hover:scale-105 transition all duration-300">
+                            <button className="bg-gradient-to-r from-[#f4d7c2] to-[#FFE2F0] text-black font-serif text-xs px-2 py-1 rounded cursor-pointer hover:from-[#ffd1a8] hover:to-[#ffc7de] transition all duration-300">
                                 Buy Now
                             </button>
                         </div>
