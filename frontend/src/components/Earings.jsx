@@ -12,7 +12,7 @@ function Earings() {
     const fetchEarrings = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:3000/category/get");
+        const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
 
         // Earrings category fetch (2nd index)
         const earringCategory = res.data.categories[1];

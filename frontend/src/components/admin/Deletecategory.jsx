@@ -17,7 +17,7 @@ function DeleteCategory() {
 
       // 👉 params ke through name bhej rahe hain
       const res = await axios.delete(
-        `http://localhost:3000/category/delete/${name}`,
+        `https://hs-jewellery.vercel.app/category/delete/${name}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

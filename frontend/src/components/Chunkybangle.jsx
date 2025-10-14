@@ -12,7 +12,7 @@ function Chunkybangle() {
     const fetchBangles = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:3000/category/get");
+        const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
         const bangleCategory = res.data.categories[5];
 
         const bangleItems = bangleCategory.images.urls.map((url, index) => ({

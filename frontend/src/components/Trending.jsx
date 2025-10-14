@@ -9,7 +9,7 @@ function Trending() {
         const fetchImages = async () => {
             try {
                 setLoading(true);
-                let res = await axios.get('http://localhost:3000/category/get');
+                let res = await axios.get('https://hs-jewellery.vercel.app/category/get');
                 let first3Categ = res.data.categories.slice(0, 3);
 
                 let allProducts = [];
