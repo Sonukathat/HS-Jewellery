@@ -1,83 +1,83 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function StealDeal() {
-  const [stealImg, setStealImg] = useState([]);
-  const [loading, setLoading] = useState(true);
+function Trending() {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchStealImg = async () => {
-      try {
-        setLoading(true);
-        const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
-        const categories = res.data.categories;
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                setLoading(true);
+                let res = await axios.get('https://hs-jewellery.vercel.app/category/get');
+                let first3Categ = res.data.categories.slice(0, 3);
 
-        const selected = categories.flatMap(cat => {
-          return cat.images.details.slice(0, 2).map((item, index) => ({
-            ...item,
-            image: cat.images.urls[index],
-          }));
-        });
+                let allProducts = [];
 
-        setStealImg(selected.slice(0, 10));
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching images:", error);
-        setLoading(false);
-      }
-    };
-    fetchStealImg();
-  }, []);
+                first3Categ.forEach((category) => {
+                    let imagesData = category.images;
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-96">
-        <div className="loader border-t-4 border-b-4 border-green-900 rounded-full w-12 h-12 animate-spin"></div>
-      </div>
-    );
-  }
+                    let combined = imagesData.details.slice(0, 4).map((item, index) => ({
+                        ...item,
+                        image: imagesData.urls[index],
+                    }));
 
-  return (
-    <div className="flex flex-col gap-4">
-      <div>
-        <h2 className="text-4xl py-10 ml-4 font-serif">Steal the Deal</h2>
-      </div>
+                    allProducts = [...allProducts, ...combined];
+                });
 
-      <div className="grid grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 lg:gap-4">
-        {stealImg.map((item, i) => (
-          <div
-            key={i}
-            className="cursor-pointer border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out"
-          >
-            <img
-              src={item.image}
-              alt={item.name}
-              className="h-96 w-full rounded-t-md transition-transform duration-500 ease-in-out transform hover:scale-101"
-            />
-            <button className="bg-green-950 text-white px-3 py-1 rounded-md relative left-2 bottom-8 text-sm">
-              Sale
-            </button>
-            <p className="mt-2 ml-5 font-serif">{item.name}</p>
-            <div className="flex justify-between items-center">
-              <div className="flex">
-                <p className="my-3 ml-5">Rs {item.price}</p>
-              </div>
-              {/* Buy Now button like Trending */}
-              <button className="bg-gradient-to-r from-[#f4d7c2] to-[#FFE2F0] text-black font-serif text-xs px-2 py-1 rounded cursor-pointer hover:from-[#ffd1a8] hover:to-[#ffc7de] transition-all duration-300">
-                Buy Now
-              </button>
+                setProducts(allProducts);
+                setLoading(false);
+            } catch (error) {
+                console.log("Error Fetching Images", error);
+                setLoading(false);
+            }
+        }
+        fetchImages();
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-96">
+                <div className="loader border-t-4 border-b-4 border-gray-900 rounded-full w-12 h-12 animate-spin"></div>
             </div>
-          </div>
-        ))}
-      </div>
+        );
+    }
 
-      <div className="flex justify-center py-8">
-        <button className="bg-[#A58A6C] text-white px-8 py-3 rounded-md cursor-pointer">
-          View all
-        </button>
-      </div>
-    </div>
-  );
+    return (
+        <div className="flex flex-col gap-8">
+            <div>
+                <h2 className="text-4xl font-serif my-4 ml-4">Trending Now</h2>
+            </div>
+            <div className="grid grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {products.slice(0, 12).map((item, i) => (
+                    <div
+                        key={i}
+                        className="cursor-pointer border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out overflow-hidden"
+                    >
+                        <img
+                            src={item.image}
+                            alt={item.name}
+                            className="h-96 w-full transition-transform duration-500 ease-in-out transform hover:scale-101"
+                        />
+                        <div className="flex justify-between items-center p-4">
+                            <div>
+                                <p className="font-serif">{item.name}</p>
+                                <p className="mt-1">₹ {item.price}</p>
+                            </div>
+                            <button className="bg-gradient-to-r from-[#f4d7c2] to-[#FFE2F0] text-black font-serif text-xs px-2 py-1 rounded cursor-pointer hover:from-[#ffd1a8] hover:to-[#ffc7de] hover:scale-105 transition all duration-300">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div className="flex justify-center">
+                <button className="bg-[#A58A6C] px-8 py-3 text-white rounded-md cursor-pointer hover:bg-[#8c6f53] transition-colors duration-300">
+                    View all
+                </button>
+            </div>
+        </div>
+    );
 }
 
-export default StealDeal;
+export default Trending;
