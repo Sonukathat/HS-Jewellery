@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";//asdfghjk
+import axios from "axios";
 
 function Trending() {
     const [products, setProducts] = useState([]);
