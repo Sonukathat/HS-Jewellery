@@ -9,7 +9,7 @@ function Jhumkas() {
     const fetchJumka = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:3000/category/get");
+        const res = await axios.get("https://hs-jewellery.vercel.app/category/get");
         const selected = res.data.categories[4].images;
 
         let needed = selected.details.map((detail, index) => ({
