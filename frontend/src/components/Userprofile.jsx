@@ -39,7 +39,7 @@ const Userprofile = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    navigate('/signin');
+    navigate('/');
   }
 
   if (loading) {
