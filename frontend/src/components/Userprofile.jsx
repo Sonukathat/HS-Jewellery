@@ -58,7 +58,7 @@ const Userprofile = () => {
 
       <h2 className="text-2xl font-bold text-black mb-2">{user.name}</h2>
       <p className="text-black text-sm opacity-80">{user.email}</p>
-      <button onClick={handleLogout} className="bg-white rounded-2xl cursor-pointer px-4 py-1 mt-4">
+      <button onClick={handleLogout} className="bg-white rounded-2xl cursor-pointer px-1 py-1 mt-4">
         Log Out
       </button>
       {error && <p className="text-red-500 mt-2">{error}</p>}
