@@ -11,7 +11,7 @@ function Feedback() {
             review: "I am delighted with my recent purchases. Your collection reflects a refined elegance that stands out in the marketplace. Thank you for providing such a remarkable shopping experience. I look forward to exploring more of your beautiful pieces in the future."
         },
         {
-            name: "Faizan",
+            name: "Saniya",
             review: "This is my second time ordering from your store and I wanted to let you know how much I love your products!"
         },
         {
