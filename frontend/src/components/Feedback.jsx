@@ -3,7 +3,7 @@ function Feedback() {
 
     const feedbacks = [
         {
-            name: "Durga",
+            name: "Joya",
             review: "Received my order. The quality is top notch with affordable price. Just love it. Keep going"
         },
         {
