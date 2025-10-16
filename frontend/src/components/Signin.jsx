@@ -6,7 +6,9 @@ import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 function Signin() {
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -14,43 +16,27 @@ function Signin() {
 
   const handleSignin = async (event) => {
     event.preventDefault();
-
     try {
       const res = await axios.post('https://hs-jewellery.vercel.app/users/login', {
         email,
         password,
       });
-
-      // Save token and user info in localStorage
+      console.log(res)
       const token = res.data.token;
       localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("user", JSON.stringify(res.data.user))
 
-      toast.success("Signin successful!");
-
-      setEmail('');
-      setPassword('');
-
-      // Redirect based on role
       if (res.data.user.isAdmin) {
         navigate("/admin");
       } else {
         navigate("/");
       }
 
+      toast.success("Signin successful!");
+      setEmail('');
+      setPassword('');
     } catch (error) {
-      const msg = error.response?.data?.message;
-
-      // Check specific backend messages
-      if (msg?.toLowerCase().includes("not found")) {
-        toast.error("User not registered. Please register first!");
-        setTimeout(() => navigate("/signup"), 2000);
-      } else if (msg?.toLowerCase().includes("invalid")) {
-        toast.error("Incorrect password!");
-      } else {
-        toast.error(msg || "Signin failed. Try again!");
-      }
-
+      toast.error(error.response?.data?.message || "Signin failed");
       console.error("Signin error:", error);
     }
   };
@@ -64,16 +50,14 @@ function Signin() {
           className="rounded-lg bg-white p-10 flex flex-col gap-6 w-72 sm:w-[25rem]"
         >
           <div className="flex justify-center">
-            <h2 className="text-xl font-bold tracking-wide">MACHKI</h2>
+            <h2 className="text-xl">MACHKI</h2>
           </div>
-
           <div>
             <h2 className="text-xl font-bold">Sign in</h2>
             <p className="text-sm text-gray-600">
               Enter your email and password to sign in
             </p>
           </div>
-
           <div className="flex flex-col gap-4">
             <input
               className="border border-gray-300 px-4 py-2 rounded-md"
@@ -93,13 +77,12 @@ function Signin() {
             />
             <button
               type="submit"
-              className="bg-blue-800 hover:bg-blue-900 cursor-pointer py-3 text-white rounded-md transition-all duration-300"
+              className="bg-blue-800 cursor-pointer py-3 text-white rounded-md"
             >
               Continue
             </button>
           </div>
-
-          <div className="flex gap-4 text-sm text-blue-500 justify-center">
+          <div className="flex gap-4 text-sm text-blue-500">
             <a className="hover:underline" href="#">
               Privacy policy
             </a>
@@ -112,7 +95,6 @@ function Signin() {
           </div>
         </form>
       </div>
-
       <Footer />
       <ToastContainer position="top-right" />
     </>
