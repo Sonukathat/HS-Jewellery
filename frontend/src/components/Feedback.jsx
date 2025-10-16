@@ -23,7 +23,7 @@ function Feedback() {
             review: "Just received couple of Bracelets today, just beautiful Specially the packaging and fragrance"
         },
         {
-            name: "Lakshika",
+            name: "Akira",
             review: "Oh my god!! I received the parcel today, the packaging itself feels luxurious.The pieces are so cute and so pinterest coded just loved it!!!"
         }
     ];
