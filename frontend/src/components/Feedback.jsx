@@ -7,7 +7,7 @@ function Feedback() {
             review: "Received my order. The quality is top notch with affordable price. Just love it. Keep going"
         },
         {
-            name: "Mohita",
+            name: "Nikita",
             review: "I am delighted with my recent purchases. Your collection reflects a refined elegance that stands out in the marketplace. Thank you for providing such a remarkable shopping experience. I look forward to exploring more of your beautiful pieces in the future."
         },
         {
