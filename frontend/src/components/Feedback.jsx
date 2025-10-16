@@ -15,11 +15,11 @@ function Feedback() {
             review: "This is my second time ordering from your store and I wanted to let you know how much I love your products!"
         },
         {
-            name: "Manjeera",
+            name: "Janvi",
             review: "Received my parcel and I must say hands down the best customer service you guys have. Loved the jewelry, every piece of yours is unique and they are just stunning. I'm def going to purchase more from you!"
         },
         {
-            name: "Deepak",
+            name: "Payal",
             review: "Just received couple of Bracelets today, just beautiful Specially the packaging and fragrance"
         },
         {
