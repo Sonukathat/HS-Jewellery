@@ -1,4 +1,4 @@
-function Details({ heading, headingimage, all }) {
+function Details({ heading, headingimage, all, handleBuyNow }) {
   return (
     <div className="py-12">
       <div className="flex flex-col px-1 sm:flex-row sm:items-center justify-around">
@@ -33,7 +33,10 @@ function Details({ heading, headingimage, all }) {
                 <p className="font-serif">{item.name}</p>
                 <p className="text-gray-600 text-sm">₹{item.price}</p>
               </div>
-              <button className="bg-gradient-to-r from-[#f4d7c2] to-[#FFE2F0] text-black font-serif text-xs px-2 py-1 rounded cursor-pointer hover:from-[#ffd1a8] hover:to-[#ffc7de] transition-all duration-300">
+              <button
+                onClick={() => handleBuyNow(item)} // 🔹 parent function call
+                className="bg-gradient-to-r from-[#f4d7c2] to-[#FFE2F0] text-black font-serif text-xs px-2 py-1 rounded cursor-pointer hover:from-[#ffd1a8] hover:to-[#ffc7de] transition-all duration-300"
+              >
                 Buy Now
               </button>
             </div>
