@@ -55,8 +55,8 @@ function Trending() {
     e.preventDefault();
 
     toast.success(`Order placed for ${selectedProduct.name} x${quantity}`, {
-      position: "top-right",
-      autoClose: 3000,
+      position: "top-right"
+    //   autoClose: 3000,
     });
 
     console.log("Order data:", { selectedProduct, quantity, address });

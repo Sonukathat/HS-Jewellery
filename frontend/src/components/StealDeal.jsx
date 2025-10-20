@@ -50,7 +50,7 @@ function StealDeal() {
 
     toast.success(`Order placed for ${selectedProduct.name} x${quantity}`, {
       position: "top-right",
-      autoClose: 3000,
+      // autoClose: 3000,
     });
 
     console.log("Order data:", { selectedProduct, quantity, address });
