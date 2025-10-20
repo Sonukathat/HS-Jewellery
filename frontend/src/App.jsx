@@ -25,10 +25,13 @@ import Userprofile from "./components/Userprofile";
 import AllUser from "./components/admin/AllUser";
 import Createorder from "./components/Createorder";
 import GetToKnow from "./components/Gettoknow";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
+     <ToastContainer />
       <Routes>
         <Route path="/" element={
           <>

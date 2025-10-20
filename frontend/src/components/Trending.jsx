@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaMinus } from "react-icons/fa";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 function Trending() {
   const [products, setProducts] = useState([]);
@@ -55,11 +55,11 @@ function Trending() {
     e.preventDefault();
 
     toast.success(`Order placed for ${selectedProduct.name} x${quantity}`, {
-      position: "top-right"
-    //   autoClose: 3000,
+      position: "top-right",
+      autoClose: 3000,
     });
 
-    console.log("Order data:", { selectedProduct, quantity, address });
+    // console.log("Order data:", { selectedProduct, quantity, address });
     setShowForm(false);
   };
 
@@ -73,7 +73,7 @@ function Trending() {
 
   return (
     <>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <div className="flex flex-col gap-8">
         <div>
           <h2 className="text-4xl font-serif my-4 ml-4">Trending Now</h2>

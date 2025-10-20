@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 function Jhumkas() {
   const [jumka, setJumka] = useState([]);
@@ -49,7 +49,7 @@ function Jhumkas() {
 
     toast.success(`Order placed for ${selectedProduct.name} x${quantity}`, {
       position: "top-right",
-      // autoClose: 3000,
+      autoClose: 3000,
     });
 
     console.log("Order data:", { selectedProduct, quantity, address });
@@ -66,7 +66,7 @@ function Jhumkas() {
 
   return (
     <>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <div className="flex flex-col gap-4">
         <div>
           <h2 className="text-4xl ml-4 py-10 font-serif">Jhumkas</h2>

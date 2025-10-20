@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaMinus } from "react-icons/fa";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 function StealDeal() {
   const [stealImg, setStealImg] = useState([]);
@@ -50,7 +50,7 @@ function StealDeal() {
 
     toast.success(`Order placed for ${selectedProduct.name} x${quantity}`, {
       position: "top-right",
-      // autoClose: 3000,
+      autoClose: 3000,
     });
 
     console.log("Order data:", { selectedProduct, quantity, address });
@@ -67,7 +67,7 @@ function StealDeal() {
 
   return (
     <>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <div className="flex flex-col gap-4">
         <div>
           <h2 className="text-4xl py-10 ml-4 font-serif">Steal the Deal</h2>
