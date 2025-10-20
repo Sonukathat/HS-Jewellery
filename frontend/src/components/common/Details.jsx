@@ -1,6 +1,4 @@
-// import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
-function Details({ heading, headingimage, all }) {
+function Details({ heading, headingimage, all, handleBuyNow }) {
   return (
     <div className="py-12">
       <div className="flex flex-col px-1 sm:flex-row sm:items-center justify-around">
@@ -18,7 +16,7 @@ function Details({ heading, headingimage, all }) {
         </p>
       </div>
 
-      <div className="mt-4 grid grid-cols-1 gap-8 px-4 lg:px-28 xl:px-48 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-4 grid grid-cols-1 gap-8 px-4 lg:px-28 xl:px-30 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {all.map((item, index) => (
           <div
             key={index}
@@ -29,16 +27,22 @@ function Details({ heading, headingimage, all }) {
               alt={item.name}
               className="h-80 w-full transition-transform duration-500 ease-in-out transform hover:scale-101"
             />
-            <p className="mt-4 ml-5 font-serif">{item.name}</p>
-            <p className="my-2 ml-5 text-gray-600">₹{item.price}</p>
+
+            <div className="flex items-center justify-between px-4 py-3">
+              <div>
+                <p className="font-serif">{item.name}</p>
+                <p className="text-gray-600 text-sm">₹{item.price}</p>
+              </div>
+              <button
+                onClick={() => handleBuyNow(item)} // 🔹 parent function call
+                className="bg-gradient-to-r from-[#f4d7c2] to-[#FFE2F0] text-black font-serif text-xs px-2 py-1 rounded cursor-pointer hover:from-[#ffd1a8] hover:to-[#ffc7de] transition-all duration-300"
+              >
+                Buy Now
+              </button>
+            </div>
           </div>
         ))}
       </div>
-
-      {/* <div className="mt-4 flex justify-center gap-8 text-2xl">
-        <IoIosArrowBack className="cursor-pointer" />
-        <IoIosArrowForward className="cursor-pointer" />
-      </div> */}
     </div>
   );
 }
