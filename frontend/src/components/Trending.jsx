@@ -34,7 +34,7 @@ function Trending() {
         }
         fetchImages();
     }, []);
-
+ 
     if (loading) {
         return (
             <div className="flex justify-center items-center h-96">
