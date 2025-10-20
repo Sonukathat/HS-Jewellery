@@ -6,7 +6,7 @@ import Emptycart from "./components/Emptycart"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import Main from "./components/Main"
-import Product from "./components/Product"
+// import Product from "./components/Product"
 import Rings from "./components/Rings"
 import Signin from "./components/Signin"
 import Signup from "./components/Signup";
