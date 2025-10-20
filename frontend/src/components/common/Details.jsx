@@ -31,14 +31,12 @@ function Details({ heading, headingimage, all }) {
             />
             <p className="mt-4 ml-5 font-serif">{item.name}</p>
             <p className="my-2 ml-5 text-gray-600">₹{item.price}</p>
+            <button className="bg-gradient-to-r from-[#f4d7c2] to-[#FFE2F0] text-black font-serif text-xs px-2 py-1 rounded cursor-pointer hover:from-[#ffd1a8] hover:to-[#ffc7de] transition all duration-300">
+              Buy Now
+            </button>
           </div>
         ))}
       </div>
-
-      {/* <div className="mt-4 flex justify-center gap-8 text-2xl">
-        <IoIosArrowBack className="cursor-pointer" />
-        <IoIosArrowForward className="cursor-pointer" />
-      </div> */}
     </div>
   );
 }
