@@ -92,7 +92,7 @@ function Jhumkas() {
             </button>
             <p className="mt-2 ml-5 font-serif">{src.name}</p>
             <div className="flex justify-between items-center px-5">
-              <p className="my-3">₹ {src.price}</p>
+              <p className="my-3 text-gray-600 text-sm">₹{src.price}</p>
               <button
                 onClick={() => handleBuyNow(src)}
                 className="bg-gradient-to-r from-[#f4d7c2] to-[#FFE2F0] text-black font-serif text-xs px-2 py-1 rounded cursor-pointer hover:from-[#ffd1a8] hover:to-[#ffc7de] transition-all duration-300"

@@ -95,7 +95,7 @@ function StealDeal() {
             <p className="mt-2 ml-5 font-serif">{item.name}</p>
             <div className="flex justify-between items-center">
               <div className="flex">
-                <p className="my-3 ml-5">₹ {item.price}</p>
+                <p className="my-3 ml-5 text-gray-600 text-sm">₹{item.price}</p>
               </div>
               <button
                 onClick={() => handleBuyNow(item)}

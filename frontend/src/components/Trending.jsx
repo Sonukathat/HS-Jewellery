@@ -99,7 +99,7 @@ function Trending() {
             <div className="flex justify-between items-center p-4">
               <div>
                 <p className="font-serif">{item.name}</p>
-                <p className="mt-1">₹ {item.price}</p>
+                <p className="mt-1 text-gray-600 text-sm">₹{item.price}</p>
               </div>
               <button
                 onClick={() => handleBuyNow(item)}
