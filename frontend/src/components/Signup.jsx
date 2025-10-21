@@ -38,7 +38,7 @@ function Signup() {
                     className="rounded-lg bg-white p-10 flex flex-col gap-6 w-72 sm:w-[25rem]"
                 >
                     <div className="flex justify-center">
-                        <h2 className="text-xl">MACHKI</h2>
+                        <h2 className="text-xl">H&S</h2>
                     </div>
                     <div>
                         <h2 className="text-xl font-bold">Sign up</h2>
