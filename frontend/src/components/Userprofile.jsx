@@ -13,7 +13,7 @@ const Userprofile = () => {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
       if (!token) {
-        navigate('/signin');
+        // navigate('/signin');
         return;
       }
 
