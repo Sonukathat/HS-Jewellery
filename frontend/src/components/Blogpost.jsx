@@ -12,9 +12,9 @@ function Blogpost() {
                     </div>
                     <div className="p-8">
                         <p className="text-2xl font-serif">2025 Jewelry Trend</p>
-                        <p className="text-xs mt-2">FEBRUARY 5, 2025</p>
+                        <p className="text-xs mt-2">FEBRUARY 25, 2025</p>
                         <p className="mt-4 font-serif">
-                            February 5, 2025
+                            February 25, 2025
                             The jewelry trends for 2025 feature a stunning mix of bold statement pieces, playful colors, and natural inspiration, offering something for every personality and style. Here’s an in-depth look at...
                         </p>
                     </div>
