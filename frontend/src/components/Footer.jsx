@@ -13,7 +13,6 @@ function Footer() {
 
   const info = [
     "© 2025, Powered by React",
-    // "Refund policy",
     "Privacy policy",
     "Terms of service",
     "Shipping policy",
