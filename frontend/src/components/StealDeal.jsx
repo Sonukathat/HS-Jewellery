@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 // import "react-toastify/dist/ReactToastify.css";
 
 function StealDeal() {
+
+  const navigate = useNavigate()
+
   const [stealImg, setStealImg] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -104,7 +108,7 @@ function StealDeal() {
         </div>
 
         <div className="flex justify-center py-8">
-          <button className="bg-[#A58A6C] text-white px-8 py-3 rounded-md cursor-pointer">
+          <button onClick={()=>navigate('/shop-all')} className="bg-[#A58A6C] text-white px-8 py-3 rounded-md cursor-pointer">
             View all
           </button>
         </div>
