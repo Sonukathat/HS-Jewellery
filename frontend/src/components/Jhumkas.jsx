@@ -1,10 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
 function Jhumkas() {
+
+  const navigate = useNavigate()
+
   const [jumka, setJumka] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -99,7 +103,7 @@ function Jhumkas() {
           ))}
         </div>
         <div className="flex justify-center py-8">
-          <button className="bg-[#A58A6C] text-white px-8 py-3 rounded-md cursor-pointer">
+          <button onClick={()=>navigate('/jumka')} className="bg-[#A58A6C] text-white px-8 py-3 rounded-md cursor-pointer">
             View all
           </button>
         </div>
