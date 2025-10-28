@@ -70,7 +70,6 @@ function Jhumkas() {
 
   return (
     <>
-      {/* <ToastContainer /> */}
       <div className="flex flex-col gap-4">
         <div>
           <h2 className="text-4xl ml-4 py-10 font-serif">Jhumkas</h2>
@@ -124,7 +123,6 @@ function Jhumkas() {
             <p className="text-gray-600 mb-4">₹ {selectedProduct.price}</p>
 
             <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
-              {/* Quantity */}
               <div>
                 <label className="block text-sm font-semibold mb-1">Quantity:</label>
                 <div className="flex items-center gap-2">
@@ -152,8 +150,6 @@ function Jhumkas() {
                   </button>
                 </div>
               </div>
-
-              {/* Address */}
               <textarea
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
@@ -161,8 +157,6 @@ function Jhumkas() {
                 className="border border-gray-300 rounded px-2 py-1 w-full h-20 resize-none"
                 required
               />
-
-              {/* Buttons */}
               <div className="flex justify-between mt-4">
                 <button
                   type="button"
