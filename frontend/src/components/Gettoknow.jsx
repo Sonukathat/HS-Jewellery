@@ -8,7 +8,7 @@ export default function GetToKnow() {
       </p>
 
       <p>
-        Jewelry is not just something you wear — it’s something you feel. A delicate necklace can carry the memory of a special day. A ring can represent a lifetime of love. And sometimes, even the smallest detail — a cut, a curve, a sparkle — becomes a symbol of something unforgettable.
+        Jewelery is not just something you wear — it’s something you feel. A delicate necklace can carry the memory of a special day. A ring can represent a lifetime of love. And sometimes, even the smallest detail — a cut, a curve, a sparkle — becomes a symbol of something unforgettable.
       </p>
 
       <p className="mt-4">
@@ -53,7 +53,7 @@ export default function GetToKnow() {
 
       <p className="mt-4 font-semibold text-gray-900">Welcome to H&amp;S — where every piece tells a story.</p>
 
-      <p className="mt-2 text-sm text-gray-500 text-right"> Sonu Kathat<br/>Founder &amp; Designer, H&amp;S Jewellery</p>
+      <p className="mt-2 text-sm text-gray-500 text-right">— Sonu Kathat<br/>Founder &amp; Designer, H&amp;S Jewellery</p>
     </div>
   );
 }
