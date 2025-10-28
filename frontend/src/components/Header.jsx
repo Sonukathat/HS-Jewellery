@@ -67,7 +67,7 @@ function Header() {
 
                 {/* Logo */}
                 <div>
-                    <img src={HS} alt="logo" className="w-10 xl:w-14 border rounded-full" />
+                    <img src={HS} alt="logo" className="w-8 xl:w-14 border rounded-full" />
                 </div>
 
                 {/* Desktop Menu */}
