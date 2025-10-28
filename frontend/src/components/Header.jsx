@@ -111,7 +111,7 @@ function Header() {
                         <Link
                             to={item.path}
                             key={index}
-                            className="block cursor-pointer border-b border-gray-400 py-1"
+                            className="block font-serif cursor-pointer border-b border-gray-400 py-1"
                             onClick={() => setMenuOpen(false)}
                         >
                             {item.name}
