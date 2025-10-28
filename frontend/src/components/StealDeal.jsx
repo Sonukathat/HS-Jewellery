@@ -71,7 +71,6 @@ function StealDeal() {
 
   return (
     <>
-      {/* <ToastContainer /> */}
       <div className="flex flex-col gap-4">
         <div>
           <h2 className="text-4xl py-10 ml-4 font-serif">Steal the Deal</h2>
@@ -108,7 +107,7 @@ function StealDeal() {
         </div>
 
         <div className="flex justify-center py-8">
-          <button onClick={()=>navigate('/shop-all')} className="bg-[#A58A6C] text-white px-8 py-3 rounded-md cursor-pointer">
+          <button onClick={() => navigate('/shop-all')} className="bg-[#A58A6C] text-white px-8 py-3 rounded-md cursor-pointer">
             View all
           </button>
         </div>
@@ -129,7 +128,6 @@ function StealDeal() {
             <p className="text-gray-600 mb-4">₹ {selectedProduct.price}</p>
 
             <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
-              {/* Quantity */}
               <div>
                 <label className="block text-sm font-semibold mb-1">Quantity:</label>
                 <div className="flex items-center gap-2">
@@ -157,8 +155,6 @@ function StealDeal() {
                   </button>
                 </div>
               </div>
-
-              {/* Address */}
               <textarea
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
@@ -166,8 +162,6 @@ function StealDeal() {
                 className="border border-gray-300 rounded px-2 py-1 w-full h-20 resize-none"
                 required
               />
-
-              {/* Buttons */}
               <div className="flex justify-between mt-4">
                 <button
                   type="button"
