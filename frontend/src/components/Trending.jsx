@@ -105,7 +105,7 @@ function Trending() {
           ))}
         </div>
         <div className="flex justify-center">
-          <button className="bg-[#A58A6C] px-8 py-3 text-white rounded-md cursor-pointer hover:bg-[#8c6f53] transition-colors duration-300">
+          <button className="bg-[#A58A6C] px-8 py-3 text-white rounded-md cursor-pointer">
             View all
           </button>
         </div>
