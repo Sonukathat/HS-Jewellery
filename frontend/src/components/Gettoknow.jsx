@@ -53,7 +53,7 @@ export default function GetToKnow() {
 
       <p className="mt-4 font-semibold text-gray-900">Welcome to H&amp;S — where every piece tells a story.</p>
 
-      <p className="mt-2 text-sm text-gray-500 text-right">— Sonu Kathat<br/>Founder &amp; Designer, H&amp;S Jewellery</p>
+      <p className="mt-2 text-sm text-gray-500 text-right"> Sonu Kathat<br/>Founder &amp; Designer, H&amp;S Jewellery</p>
     </div>
   );
 }
