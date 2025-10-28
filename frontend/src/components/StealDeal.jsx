@@ -81,7 +81,7 @@ function StealDeal() {
           {stealImg.map((item, i) => (
             <div
               key={i}
-              className="cursor-pointer border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300 ease-in-out"
+              className="cursor-pointer border border-gray-200 rounded-md hover:border-gray-500 transition-all duration-300"
             >
               <img
                 src={item.image}
