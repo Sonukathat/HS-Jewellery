@@ -12,9 +12,9 @@ function Header() {
     const isLoggedIn = !!token;
 
     const texts = [
-        "Cash On Delivery Upto 2000/-",
-        "Flat 10% off on Prepaid orders above 2000/-",
-        "Free shipping on orders above 1500/-"
+        "Cash On Delivery Upto 2500/-",
+        "Flat 10% off on Prepaid orders above 2500/-",
+        "Free shipping on orders above 2000/-"
     ];
     const [index, setIndex] = useState(0);
 
