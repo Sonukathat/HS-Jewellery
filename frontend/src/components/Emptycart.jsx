@@ -11,7 +11,7 @@ function Emptycart() {
           <h2 className="text-3xl">Your cart is empty</h2>
         </div>
         <div>
-          <button className="bg-gray-800 px-8 py-3 text-white rounded-md">Continue shopping</button>
+          <button className="bg-gray-800 px-8 py-3 text-white rounded-md cursor-none">Continue shopping</button>
         </div>
         <div>
           <h2 className="text-xl">Have an account?</h2>
